@@ -1,54 +1,173 @@
-from test03 import *
-import webbrowser
-from PyQt5.Qt import *
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QWidget, QLabel, QPushButton
+from LogIn import Ui_LRMainWindow
+from testwindow import Ui_testwindow  # 假设testshowmenu.py中定义了Ui_MainWindow类
+from PyQt5 import QtCore, QtWidgets
+from  PyQt5.QtWidgets import QFrame, QApplication, QMainWindow, QDesktopWidget,  QPushButton
 import sys
 import pymysql
 
-
-class TestWindow(QMainWindow):
+class LogInWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)  # 初始化UI布局
+        self.ui = Ui_LRMainWindow()
+        self.ui.setupUi(self)
 
-        # 设置窗口无边框和透明背景
+        # 设置窗口无边框及透明背景
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+        # 窗口居中显示
+        self.center()
+
+        # 按钮绑定函数
+        self.ui.pushButton_LogIn.clicked.connect(lambda: self.ui.stackedWidget_LR.setCurrentIndex(0))
+        self.ui.pushButton_userRegister.clicked.connect(lambda: self.ui.stackedWidget_LR.setCurrentIndex(1))
+        self.ui.pushButton_manufacturerRegister.clicked.connect(lambda: self.ui.stackedWidget_LR.setCurrentIndex(2))
+
+        # 异常栏初始化
+        self.ui.success_error_Type.setCurrentIndex(0)
+
+        # 显示登录界面
+        self.show()
+
+        # 登录按钮点击事件
+        self.ui.pushButton_L_Sure.clicked.connect(self.log_in)
+
+        #用户注册按钮点击事件
+        self.ui.pushButton_User_R_Sure.clicked.connect(self.register_user)
+
+    #居中显示
+    def center(self):
+        # 窗口居中
+        qr = self.frameGeometry()
+        cp = QtWidgets.QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+    #用户(厂商)登录
+    def log_in(self):
+        self.ui.success_error_Type.setCurrentIndex(0)
+        account_number = self.ui.lineEdit_L_AccountNumber.text()
+        password = self.ui.lineEdit_L_Password.text()
+
+        if len(account_number) <= 10:
+            try:
+                db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+                cursor = db.cursor()
+
+                cursor.execute("SELECT * FROM user WHERE ACCOUNT_NUMBER = %s", (account_number,))
+                flag = cursor.fetchall()
+
+                if not flag:
+                    self.ui.success_error_Type.setCurrentIndex(3)  # 没有找到账户
+                else:
+                    # 确保查询有结果才尝试访问
+                    if len(flag) > 0 and password == flag[0][2]:  # 假设密码在查询结果的第3个位置
+                        self.ui.success_error_Type.setCurrentIndex(1)
+                        self.win = MainUserWindow()
+                        self.win.show()
+                        self.close()
+                    else:
+                        self.ui.success_error_Type.setCurrentIndex(3)  # 密码错误
+            except pymysql.MySQLError as e:
+                print(f"Database Error: {e}")
+                self.ui.success_error_Type.setCurrentIndex(3)  # 数据库错误或其他未知错误
+            finally:
+                db.close()
+        else:
+            self.ui.success_error_Type.setCurrentIndex(3)  # 账户名长度超过限制
+
+    def register_user(self):
+        self.ui.success_error_Type.setCurrentIndex(0)
+
+        new_account_number = self.ui.lineEdit_User_R_AccountNumber.text()
+        new_password = self.ui.lineEdit_User_R_Password.text()
+        new_check_password = self.ui.lineEdit_User_R_CheckPassword.text()
+
+        # 检查用户名和密码长度
+        if len(new_account_number) > 10 or len(new_password) > 20 or len(new_account_number) == 0 or len(
+                new_password) == 0:
+            self.ui.success_error_Type.setCurrentIndex(4)
+            return
+        elif new_password != new_check_password:
+            self.ui.success_error_Type.setCurrentIndex(6)
+            return
+
+        try:
+            db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+            cursor = db.cursor()
+
+            # 防止SQL注入，使用参数化查询
+            cursor.execute("SELECT * FROM user WHERE ACCOUNT_NUMBER = %s", (new_account_number,))
+            flag = cursor.fetchall()
+
+            if not flag:
+                cursor.execute("SELECT COUNT(*) FROM user")
+                user_count = int(cursor.fetchone()[0])
+                new_user_id = 'U' + str(user_count + 1).zfill(8)
+                # 使用参数化查询插入数据
+                cursor.execute("INSERT INTO user (ID, ACCOUNT_NUMBER, PASSWORD) VALUES (%s, %s, %s)",
+                               (new_user_id, new_account_number, new_password))
+                db.commit()  # 提交事务，确保数据被保存
+            else:
+                self.ui.success_error_Type.setCurrentIndex(5)
+        except pymysql.MySQLError as e:
+            print(f"Database Error: {e}")
+            self.ui.success_error_Type.setCurrentIndex(3)  # 数据库错误或其他未知错误
+        finally:
+            db.close()
+
+
+class MainUserWindow(QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_testwindow()  # 注意这里是实例化对象
+        self.ui.setupUi(self)
+
+        # 设置窗口无边框及透明背景
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         # 窗口居中
-        screen = QDesktopWidget().screenGeometry()  # 获取屏幕大小
-        self.top = int((screen.width() - self.width()) / 2)  # 左上角x坐标
-        self.left = int((screen.height() - self.height()) / 2)  # 左上角y坐标
-        self.setGeometry(self.top, self.left, self.width(), self.height())
+        self.center()
+
         # 连接数据库
         db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
         cursor = db.cursor()
 
-        # 查询厂商数量
-        cursor.execute("SELECT COUNT(*) FROM manufacturer")  # 添加表名'manufacturer'
-        manufacturers_count = int(cursor.fetchone()[0])
+        # 查询游戏数量
+        cursor.execute("SELECT COUNT(*) FROM game")  # 添加表名'manufacturer'
+        game_count = int(cursor.fetchone()[0])
 
-        # 查询所有制造商
+        # 查询所有游戏具体信息
         cursor.execute("SELECT id, introduction, price FROM game")
 
-        # 获取所有制造商的id和简介
-        all_manufacturers = cursor.fetchall()
+        # 获取所有游戏具体信息
+        all_game = cursor.fetchall()
 
         # 关闭数据库连接
         db.close()
 
-        x = 0  # 初始化x坐标
-        y = 0  # 初始化y坐标
+        x = 207  # 初始化x坐标
+        y = 180  # 初始化y坐标
 
-        for i in range(0, manufacturers_count):
-            self.add_page(x, y , all_manufacturers[i][0], all_manufacturers[i][1], all_manufacturers[i][2])
-            y += 150  # 增加x坐标，以便放置下一个页面
+        for i in range(0, game_count):
+            self.add_page(x, y, all_game[i][0], all_game[i][1], all_game[i][2])
+            y += 160  # 增加x坐标，以便放置下一个页面(150高度，10空隙)
             # if x >= screen.width():  # 如果x坐标超出屏幕宽度，重置x坐标并增加y坐标
             #     x = 0
             #     y += 150
 
-    # 添加到页面上
+        self.show()
+
+    #居中显示
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QtWidgets.QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+     # 添加到页面上
+    #
     def add_page(self, x, y,  id, introduction, cost):
         frame = QFrame(parent=self.ui.scrollAreaWidgetContents)  # 显式指定父对象为scroll
         frame.move(x, y)
@@ -164,12 +283,11 @@ class TestWindow(QMainWindow):
         horizontalLayout_2.addWidget(pushButton)
 
         game_frame.addLayout(horizontalLayout_2)
-
+        
 
 if __name__ == '__main__':
-    # 解决自适应缩放
+    # 启用高DPI缩放
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
-    app = QApplication(sys.argv)
-    TheWin = TestWindow()
-    TheWin.show()
+    app = QtWidgets.QApplication(sys.argv)
+    win = LogInWindow()
     sys.exit(app.exec_())
