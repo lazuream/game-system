@@ -101,104 +101,266 @@ background-color: rgb(38, 38, 38);
          <number>0</number>
         </property>
         <item>
-         <widget class="QScrollArea" name="scrollArea">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>8</verstretch>
-           </sizepolicy>
+         <widget class="QStackedWidget" name="stackedWidget_Window">
+          <property name="currentIndex">
+           <number>1</number>
           </property>
-          <property name="minimumSize">
-           <size>
-            <width>781</width>
-            <height>454</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QProgressBar{
-background-color: white; 
-border: 1px solid black;
-}</string>
-          </property>
-          <property name="widgetResizable">
-           <bool>false</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>1007</width>
-             <height>1000</height>
-            </rect>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>766</width>
-             <height>0</height>
-            </size>
-           </property>
-           <widget class="QFrame" name="frame_3">
+          <widget class="QWidget" name="page_MainWindow">
+           <widget class="QScrollArea" name="scrollArea">
             <property name="geometry">
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>1011</width>
-              <height>171</height>
+              <width>1022</width>
+              <height>640</height>
              </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>8</verstretch>
+             </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
-              <width>771</width>
-              <height>120</height>
+              <width>781</width>
+              <height>454</height>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(101, 222, 255);</string>
+             <string notr="true">QProgressBar{
+background-color: white; 
+border: 1px solid black;
+}</string>
             </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
+            <property name="widgetResizable">
+             <bool>false</bool>
             </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <widget class="QFrame" name="frame">
+            <widget class="QWidget" name="scrollAreaWidgetContents">
              <property name="geometry">
               <rect>
-               <x>290</x>
-               <y>10</y>
-               <width>661</width>
-               <height>41</height>
+               <x>0</x>
+               <y>0</y>
+               <width>1007</width>
+               <height>1000</height>
               </rect>
              </property>
-             <property name="styleSheet">
-              <string notr="true">#frame{
+             <property name="minimumSize">
+              <size>
+               <width>766</width>
+               <height>0</height>
+              </size>
+             </property>
+             <widget class="QFrame" name="frame_3">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>1011</width>
+                <height>171</height>
+               </rect>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>771</width>
+                <height>120</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(101, 222, 255);</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QFrame" name="frame">
+               <property name="geometry">
+                <rect>
+                 <x>290</x>
+                 <y>10</y>
+                 <width>661</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#frame{
 background-color: rgb(59, 59, 89,0.2);
 border-radius:15px;
 }</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <widget class="QLineEdit" name="lineEdit_SearchGame">
+                <property name="geometry">
+                 <rect>
+                  <x>470</x>
+                  <y>10</y>
+                  <width>160</width>
+                  <height>20</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 0.2);
+	border: none;</string>
+                </property>
+                <property name="placeholderText">
+                 <string>搜索</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="pushButton_SearchGame">
+                <property name="geometry">
+                 <rect>
+                  <x>590</x>
+                  <y>10</y>
+                  <width>40</width>
+                  <height>20</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255，0);
+border:none</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </widget>
+             </widget>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="page_4">
+           <widget class="QScrollArea" name="scrollArea_2">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>1022</width>
+              <height>640</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>8</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>781</width>
+              <height>454</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QProgressBar{
+background-color: white; 
+border: 1px solid black;
+}</string>
+            </property>
+            <property name="widgetResizable">
+             <bool>false</bool>
+            </property>
+            <widget class="QWidget" name="scrollAreaWidgetContents_3">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>1007</width>
+               <height>1000</height>
+              </rect>
              </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+             <property name="minimumSize">
+              <size>
+               <width>766</width>
+               <height>0</height>
+              </size>
              </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <widget class="QLineEdit" name="lineEdit">
+             <widget class="QFrame" name="frame_4">
               <property name="geometry">
                <rect>
-                <x>460</x>
-                <y>10</y>
-                <width>161</width>
-                <height>20</height>
+                <x>0</x>
+                <y>0</y>
+                <width>1011</width>
+                <height>171</height>
                </rect>
               </property>
+              <property name="minimumSize">
+               <size>
+                <width>771</width>
+                <height>120</height>
+               </size>
+              </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgba(255, 255, 255, 0.2);
+               <string notr="true">background-color: rgb(101, 222, 255);</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QFrame" name="frame_2">
+               <property name="geometry">
+                <rect>
+                 <x>290</x>
+                 <y>10</y>
+                 <width>661</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#frame{
+background-color: rgb(59, 59, 89,0.2);
+border-radius:15px;
+}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <widget class="QLineEdit" name="lineEdit_SearchGame_2">
+                <property name="geometry">
+                 <rect>
+                  <x>470</x>
+                  <y>10</y>
+                  <width>160</width>
+                  <height>20</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 0.2);
 	border: none;</string>
-              </property>
-              <property name="placeholderText">
-               <string>搜索</string>
-              </property>
+                </property>
+                <property name="placeholderText">
+                 <string>搜索</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="pushButton_SearchGame_2">
+                <property name="geometry">
+                 <rect>
+                  <x>590</x>
+                  <y>10</y>
+                  <width>40</width>
+                  <height>20</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255，0);
+border:none</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </widget>
              </widget>
             </widget>
            </widget>
@@ -233,7 +395,7 @@ border-radius:15px;
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../AUVS/test03/res.qrc"/>
+  <include location="resgame_system.qrc"/>
  </resources>
  <connections/>
 </ui>

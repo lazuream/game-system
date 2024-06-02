@@ -428,7 +428,7 @@ class Ui_LRMainWindow(object):
         LRMainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(LRMainWindow)
-        self.stackedWidget_LR.setCurrentIndex(2)
+        self.stackedWidget_LR.setCurrentIndex(0)
         self.success_error_Type.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(LRMainWindow)
 

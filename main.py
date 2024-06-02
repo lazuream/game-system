@@ -1,9 +1,11 @@
 from LogIn import Ui_LRMainWindow
 from testwindow import Ui_testwindow  # 假设testshowmenu.py中定义了Ui_MainWindow类
 from PyQt5 import QtCore, QtWidgets
-from  PyQt5.QtWidgets import QFrame, QApplication, QMainWindow, QDesktopWidget,  QPushButton
+from PyQt5.QtWidgets import QFrame, QApplication, QMainWindow, QDesktopWidget, QPushButton, QVBoxLayout
 import sys
 import pymysql
+import os
+import html
 
 class LogInWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -34,6 +36,7 @@ class LogInWindow(QtWidgets.QMainWindow):
 
         #用户注册按钮点击事件
         self.ui.pushButton_User_R_Sure.clicked.connect(self.register_user)
+
 
     #居中显示
     def center(self):
@@ -122,6 +125,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
         super().__init__()
         self.ui = Ui_testwindow()  # 注意这里是实例化对象
         self.ui.setupUi(self)
+        self.ui.stackedWidget_Window.setCurrentIndex(0)
 
         # 设置窗口无边框及透明背景
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -130,32 +134,43 @@ class MainUserWindow(QtWidgets.QMainWindow):
         # 窗口居中
         self.center()
 
+        #搜索按钮绑定
+        self.ui.pushButton_SearchGame.clicked.connect(self.search_game)
+        # self.ui.pushButton_SearchGame.clicked.connect(self.on_pushButton_SearchGame_clicked)
+
+        #设置窗口布局
+        self.scrollAreaLayout = QVBoxLayout(self.ui.scrollAreaWidgetContents_3)
+        self.ui.scrollAreaWidgetContents_3.setLayout(self.scrollAreaLayout)
+
         # 连接数据库
         db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
         cursor = db.cursor()
 
         # 查询游戏数量
-        cursor.execute("SELECT COUNT(*) FROM game")  # 添加表名'manufacturer'
+        # cursor.execute(f"SELECT COUNT(*) FROM game WHERE GAME_NAME LIKE %s", ('%' + keyword + '%',))
+        cursor.execute(f"SELECT COUNT(*) FROM game")
         game_count = int(cursor.fetchone()[0])
 
         # 查询所有游戏具体信息
-        cursor.execute("SELECT id, introduction, price FROM game")
+        cursor.execute("SELECT GAME_NAME, introduction, price FROM game")
+        # cursor.execute(f"SELECT GAME_NAME, introduction, price FROM game WHERE GAME_NAME LIKE %s", ('%' + keyword + '%',))
 
         # 获取所有游戏具体信息
         all_game = cursor.fetchall()
-
+        for i in range(0, game_count):
+            print(f"{all_game[i][0]},{all_game[i][1]},{all_game[i][2]}")
         # 关闭数据库连接
         db.close()
 
+        all_game = list(all_game)
+        # test_game = [['test1','test1',1],['test2','test2',2]]
         x = 207  # 初始化x坐标
         y = 180  # 初始化y坐标
 
         for i in range(0, game_count):
             self.add_page(x, y, all_game[i][0], all_game[i][1], all_game[i][2])
+            # self.add_page(x, y, test_game[i][0], test_game[i][1], test_game[i][2])
             y += 160  # 增加x坐标，以便放置下一个页面(150高度，10空隙)
-            # if x >= screen.width():  # 如果x坐标超出屏幕宽度，重置x坐标并增加y坐标
-            #     x = 0
-            #     y += 150
 
         self.show()
 
@@ -167,8 +182,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
         self.move(qr.topLeft())
 
      # 添加到页面上
-    #
-    def add_page(self, x, y,  id, introduction, cost):
+    def add_page(self, x, y,  name, introduction, cost):
         frame = QFrame(parent=self.ui.scrollAreaWidgetContents)  # 显式指定父对象为scroll
         frame.move(x, y)
         frame.setMinimumSize(615, 150)
@@ -193,12 +207,14 @@ class MainUserWindow(QtWidgets.QMainWindow):
                                      "    color: rgb(255, 255, 255);\n"
                                      "     }\n"
                                      "")
-        Game_Name.setText(f"{id}")
+        Game_Name.setText(f"{name}")
         Game_Name.setObjectName("Game_Name")
         game_frame.addWidget(Game_Name)
 
         #游戏简介栏
         Game_Introduction = QtWidgets.QPlainTextEdit(layoutWidget)
+        Game_Introduction.setReadOnly(True)  # 设置为只读模式
+        Game_Introduction.setMouseTracking(True)
         Game_Introduction.setStyleSheet("background-color: rgb(255, 255, 255,20);\n"
                                   "font: 10pt \"微软雅黑\";\n"
                                   "color: rgb(255, 255, 255);\n"
@@ -283,7 +299,195 @@ class MainUserWindow(QtWidgets.QMainWindow):
         horizontalLayout_2.addWidget(pushButton)
 
         game_frame.addLayout(horizontalLayout_2)
-        
+
+    # def search_game(self):
+    #     game_name = self.ui.lineEdit_SearchGame.text()
+    #     if (game_name):
+    #         try:
+    #             db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+    #             cursor = db.cursor()
+    #
+    #             cursor.execute("SELECT COUNT(*) FROM game WHERE GAME_NAME LIKE %{game_name}%")  # 添加表名'manufacturer'
+    #             game_count = int(cursor.fetchone()[0])
+    #
+    #             cursor.execute(f"SELECT * FROM game WHERE GAME_NAME LIKE %{game_name}%")
+    #             all_game = cursor.fetchall()
+    #
+    #             if all_game:
+    #                 self.ui.stackedWidget_Window.setCurrentIndex(1)
+    #                 # 关闭数据库连接
+    #                 db.close()
+    #
+    #             x = 207  # 初始化x坐标
+    #             y = 180  # 初始化y坐标
+    #
+    #             for i in range(0, game_count):
+    #                 self.add_page(x, y, all_game[i][0], all_game[i][1], all_game[i][2])
+    #                 y += 160  # 增加x坐标，以便放置下一个页面(150高度，10空隙)
+    #                  # if x >= screen.width():  # 如果x坐标超出屏幕宽度，重置x坐标并增加y坐标
+    #                  #     x = 0
+    #                  #     y += 150
+    #
+    #         except pymysql.MySQLError as e:
+    #              print(f"Database Error: {e}")
+    #              self.ui.success_error_Type.setCurrentIndex(3)  # 数据库错误或其他未知错误
+    #
+    #         finally:
+    #             db.close()
+    def search_game(self):
+        self.ui.stackedWidget_Window.setCurrentIndex(1)
+        # 连接数据库
+        db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+        cursor = db.cursor()
+
+        keyword = self.ui.lineEdit_SearchGame.text()
+
+        # 查询游戏数量
+        cursor.execute(f"SELECT COUNT(*) FROM game WHERE GAME_NAME LIKE %s", ('%' + keyword + '%',))
+        # cursor.execute(f"SELECT COUNT(*) FROM game")
+        game_count = int(cursor.fetchone()[0])
+
+        # 查询所有游戏具体信息
+        # cursor.execute("SELECT GAME_NAME, introduction, price FROM game")
+        cursor.execute(f"SELECT GAME_NAME, introduction, price FROM game WHERE GAME_NAME LIKE %s", ('%' + keyword + '%',))
+
+        # 获取所有游戏具体信息
+        all_game = cursor.fetchall()
+        for i in range(0, game_count):
+            print(f"{all_game[i][0]},{all_game[i][1]},{all_game[i][2]}")
+        # 关闭数据库连接
+        db.close()
+
+        all_game = list(all_game)
+
+        nx = 207
+        ny = 180
+
+        for i in range(0, game_count):
+            self.add_searched_page(nx, ny, all_game[i][0], all_game[i][1], all_game[i][2])
+            ny += 160
+            self.update()
+
+        self.show()
+    def add_searched_page(self, x, y, name, introduction, cost):
+        frame = QFrame(parent=self.ui.scrollAreaWidgetContents_3)  # 显式指定父对象为scroll
+        frame.move(x, y)
+        frame.setMinimumSize(615, 150)
+        frame.setMaximumSize(615, 150)
+        frame.setStyleSheet("background-color: rgb(59, 59, 89);")
+        frame.setObjectName("Frame")
+
+        layoutWidget = QtWidgets.QWidget(frame)
+        layoutWidget.setGeometry(QtCore.QRect(0, 0, 615, 150))
+        layoutWidget.setObjectName("layoutWidget")
+
+        game_frame = QtWidgets.QVBoxLayout(layoutWidget)
+        game_frame.setContentsMargins(3, 3, 3, 3)
+        game_frame.setObjectName("Frame_Game")
+
+        # 游戏名称栏
+        Game_Name = QtWidgets.QLabel(layoutWidget)
+        Game_Name.setMouseTracking(True)
+        Game_Name.setStyleSheet("QWidget {\n"
+                                "    background-color: rgb(255, 255, 255,20);\n"
+                                "    font: 15pt \"微软雅黑\";\n"
+                                "    color: rgb(255, 255, 255);\n"
+                                "     }\n"
+                                "")
+        Game_Name.setText(f"{name}")
+        Game_Name.setObjectName("Game_Name")
+        game_frame.addWidget(Game_Name)
+
+        # 游戏简介栏
+        Game_Introduction = QtWidgets.QPlainTextEdit(layoutWidget)
+        Game_Introduction.setReadOnly(True)  # 设置为只读模式
+        Game_Introduction.setMouseTracking(True)
+        Game_Introduction.setStyleSheet("background-color: rgb(255, 255, 255,20);\n"
+                                        "font: 10pt \"微软雅黑\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "border:none;")
+        Game_Introduction.setLineWidth(-1)
+        Game_Introduction.setPlainText(f"{introduction}")
+        Game_Introduction.setObjectName("Game_I")
+        game_frame.addWidget(Game_Introduction)
+
+        # 功能栏
+        horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        horizontalLayout_2.setObjectName("horizontalLayout_2")
+
+        pushButton_2 = QtWidgets.QPushButton(layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(2)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(pushButton_2.sizePolicy().hasHeightForWidth())
+        pushButton_2.setSizePolicy(sizePolicy)
+        pushButton_2.setStyleSheet("QPushButton {\n"
+                                   "    color: rgb(229, 255, 255);\n"
+                                   "background-color: rgba(255, 255, 255, 50); \n"
+                                   "     }")
+        pushButton_2.setText("")
+        pushButton_2.setObjectName("pushButton_2")
+        horizontalLayout_2.addWidget(pushButton_2)
+
+        pushButton_3 = QtWidgets.QPushButton(layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(2)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(pushButton_3.sizePolicy().hasHeightForWidth())
+        pushButton_3.setSizePolicy(sizePolicy)
+        pushButton_3.setStyleSheet("QPushButton {\n"
+                                   "    color: rgb(229, 255, 255);\n"
+                                   "background-color: rgba(255, 255, 255, 50); \n"
+                                   "     }")
+        pushButton_3.setText("")
+        pushButton_3.setObjectName("pushButton_3")
+        horizontalLayout_2.addWidget(pushButton_3)
+
+        pushButton_4 = QtWidgets.QPushButton(layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(2)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(pushButton_4.sizePolicy().hasHeightForWidth())
+        pushButton_4.setSizePolicy(sizePolicy)
+        pushButton_4.setStyleSheet("QPushButton {\n"
+                                   "    color: rgb(229, 255, 255);\n"
+                                   "background-color: rgba(255, 255, 255, 50); \n"
+                                   "     }")
+        pushButton_4.setText("")
+        pushButton_4.setObjectName("pushButton_4")
+        horizontalLayout_2.addWidget(pushButton_4)
+
+        label_6 = QtWidgets.QLabel(layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(label_6.sizePolicy().hasHeightForWidth())
+        label_6.setSizePolicy(sizePolicy)
+        label_6.setStyleSheet("font: 9pt \"黑体\";\n"
+                              "color:rgb(255, 255, 255);\n"
+                              "")
+        label_6.setText(f"{cost}")
+        label_6.setWordWrap(False)
+        label_6.setObjectName("label_6")
+        horizontalLayout_2.addWidget(label_6)
+
+        pushButton = QtWidgets.QPushButton(layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(3)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(pushButton.sizePolicy().hasHeightForWidth())
+        pushButton.setSizePolicy(sizePolicy)
+        pushButton.setStyleSheet("QPushButton {\n"
+                                 "         background-color: rgb(92, 138, 0);\n"
+                                 "    color: rgb(255, 255, 255);\n"
+                                 "     }")
+        pushButton.setText("加入购物车")
+        pushButton.setObjectName("pushButton")
+        horizontalLayout_2.addWidget(pushButton)
+
+        game_frame.addLayout(horizontalLayout_2)
+        frame.show()
+        print(f"Game frame with name '{name}' added to layout.")
 
 if __name__ == '__main__':
     # 启用高DPI缩放
