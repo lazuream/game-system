@@ -219,7 +219,7 @@ QpushButton:pressed{
                  <property name="currentIndex">
                   <number>0</number>
                  </property>
-                 <widget class="QWidget" name="page_Login">
+                 <widget class="QWidget" name="page_UserLogin">
                   <layout class="QVBoxLayout" name="verticalLayout_6">
                    <item>
                     <widget class="QLabel" name="label_UserState">
@@ -234,7 +234,7 @@ QpushButton:pressed{
 font: 16pt &quot;楷体&quot;;</string>
                      </property>
                      <property name="text">
-                      <string>登录</string>
+                      <string>用户登录</string>
                      </property>
                     </widget>
                    </item>
@@ -281,6 +281,98 @@ font: 16pt &quot;楷体&quot;;</string>
                    </item>
                    <item>
                     <widget class="QPushButton" name="pushButton_L_Sure">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	font: 14pt &quot;Eras Bold ITC&quot;;
+	background-colour:rgb(255, 255, 255);
+	colour:rgb(0, 0, 0);
+	border-radius:7px;
+}
+QpushButton:pressed{
+	paddling-top 2px;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Log   In</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="page_manufacturerLogin">
+                  <layout class="QVBoxLayout" name="verticalLayout_13">
+                   <item>
+                    <widget class="QLabel" name="label_manufacturerState">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>3</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 255, 255);
+font: 16pt &quot;楷体&quot;;</string>
+                     </property>
+                     <property name="text">
+                      <string>厂商登录</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_L_AccountNumber_manufacture">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="placeholderText">
+                      <string>账号：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_L_Password_manufacturer">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="placeholderText">
+                      <string>密码：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_L_Sure_manufacturer">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -421,7 +513,7 @@ font: 16pt &quot;楷体&quot;;</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="lineEdit_Manufacturer_Manufacturer_R_AccountNumber">
+                    <widget class="QLineEdit" name="lineEdit_Manufacturer_R_AccountNumber">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -552,30 +644,11 @@ QpushButton:pressed{
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton{
-	border:none;
-}
-QPushButton:pressed{
-	padding-top:2px;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="resgame_system.qrc">
-                   <normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</iconset>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_userRegister">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>1</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
+                 <property name="minimumSize">
+                  <size>
+                   <width>105</width>
+                   <height>0</height>
+                  </size>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QPushButton{
@@ -595,12 +668,18 @@ QPushButton:pressed{
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_manufacturerRegister">
+                <widget class="QPushButton" name="pushButton_Register">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                    <horstretch>1</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>105</width>
+                   <height>0</height>
+                  </size>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QPushButton{
@@ -759,6 +838,32 @@ QPushButton:pressed{
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButton_switch">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>30</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 15px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resgame_system.qrc">
+       <normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>330</height>
+      </size>
+     </property>
     </widget>
    </widget>
   </widget>

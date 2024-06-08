@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="icon">
+    <file>QQ图片20240607104332.jpg</file>
+    <file>QQ图片20240607103720.jpg</file>
+    <file>u=772358879,2131786806&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG.webp</file>
     <file>u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</file>
   </qresource>
 </RCC>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>506</width>
+    <height>70</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>506</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 100);  </string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="Game_Name">
+     <property name="geometry">
+      <rect>
+       <x>3</x>
+       <y>3</y>
+       <width>500</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget {
+	background-color: rgb(255, 255, 255,60);
+	font: 15pt &quot;微软雅黑&quot;;
+	color: rgb(255, 255, 255);
+     }
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_Evaluate">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>40</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+     </property>
+     <property name="text">
+      <string>评价</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_StartGame">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>40</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+         background-color: rgb(154, 231, 231);
+	color: rgb(255, 255, 255);
+     }</string>
+     </property>
+     <property name="text">
+      <string>开始游戏</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_Remove">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>40</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+     </property>
+     <property name="text">
+      <string>退款</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

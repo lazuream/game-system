@@ -68,6 +68,106 @@ background-color: rgb(38, 38, 38);
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
+       <widget class="QPushButton" name="pushButton_GoMainPage">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>10</y>
+          <width>61</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color: rgba(0, 0, 0, 0);  
+	color: rgb(255, 255, 255);
+	font: 14pt &quot;华光胖头鱼_CNKI&quot;;
+}</string>
+        </property>
+        <property name="text">
+         <string>商店</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_GoPersonalPage">
+        <property name="geometry">
+         <rect>
+          <x>940</x>
+          <y>10</y>
+          <width>61</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color: rgba(0, 0, 0, 0);  
+	color: rgb(255, 255, 255);
+	font: 10pt &quot;黑体&quot;;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_GoGameLibraryPage">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>10</y>
+          <width>61</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color: rgba(0, 0, 0, 0);  
+	color: rgb(255, 255, 255);
+	font: 14pt &quot;华光胖头鱼_CNKI&quot;;
+}</string>
+        </property>
+        <property name="text">
+         <string>库</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_GoShoppingCartPage">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>10</y>
+          <width>61</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color: rgba(0, 0, 0, 0);  
+	color: rgb(255, 255, 255);
+	font: 14pt &quot;华光胖头鱼_CNKI&quot;;
+}</string>
+        </property>
+        <property name="text">
+         <string>购物车</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_GoFriendPage">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>10</y>
+          <width>61</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color: rgba(0, 0, 0, 0);  
+	color: rgb(255, 255, 255);
+	font: 14pt &quot;华光胖头鱼_CNKI&quot;;
+}</string>
+        </property>
+        <property name="text">
+         <string>好友</string>
+        </property>
+       </widget>
       </widget>
      </item>
      <item>
@@ -103,7 +203,7 @@ background-color: rgb(38, 38, 38);
         <item>
          <widget class="QStackedWidget" name="stackedWidget_Window">
           <property name="currentIndex">
-           <number>1</number>
+           <number>7</number>
           </property>
           <widget class="QWidget" name="page_MainWindow">
            <widget class="QScrollArea" name="scrollArea">
@@ -111,7 +211,7 @@ background-color: rgb(38, 38, 38);
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>1022</width>
+              <width>1024</width>
               <height>640</height>
              </rect>
             </property>
@@ -141,8 +241,8 @@ border: 1px solid black;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>1007</width>
-               <height>1000</height>
+               <width>1009</width>
+               <height>10000</height>
               </rect>
              </property>
              <property name="minimumSize">
@@ -156,7 +256,7 @@ border: 1px solid black;
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>1011</width>
+                <width>1009</width>
                 <height>171</height>
                </rect>
               </property>
@@ -186,7 +286,7 @@ border: 1px solid black;
                </property>
                <property name="styleSheet">
                 <string notr="true">#frame{
-background-color: rgb(59, 59, 89,0.2);
+background-color: rgb(59, 59, 89,0.5);
 border-radius:15px;
 }</string>
                </property>
@@ -231,17 +331,38 @@ border:none</string>
                 </property>
                </widget>
               </widget>
+              <widget class="QLabel" name="label_picture">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>1024</width>
+                 <height>171</height>
+                </rect>
+               </property>
+               <property name="lineWidth">
+                <number>1</number>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="resgame_system.qrc">:/icon/QQ图片20240607103720.jpg</pixmap>
+               </property>
+              </widget>
+              <zorder>label_picture</zorder>
+              <zorder>frame</zorder>
              </widget>
             </widget>
            </widget>
           </widget>
-          <widget class="QWidget" name="page_4">
+          <widget class="QWidget" name="page_SearchPage">
            <widget class="QScrollArea" name="scrollArea_2">
             <property name="geometry">
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>1022</width>
+              <width>1024</width>
               <height>640</height>
              </rect>
             </property>
@@ -271,7 +392,7 @@ border: 1px solid black;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>1007</width>
+               <width>1009</width>
                <height>1000</height>
               </rect>
              </property>
@@ -326,42 +447,1056 @@ border-radius:15px;
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
-               <widget class="QLineEdit" name="lineEdit_SearchGame_2">
+              </widget>
+              <widget class="QLabel" name="label_picture_2">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>1024</width>
+                 <height>171</height>
+                </rect>
+               </property>
+               <property name="lineWidth">
+                <number>1</number>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="resgame_system.qrc">:/icon/QQ图片20240607104332.jpg</pixmap>
+               </property>
+              </widget>
+             </widget>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="page_PersonalFriendPage">
+           <widget class="QFrame" name="frame_8">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>1024</width>
+              <height>640</height>
+             </rect>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QFrame" name="frame_6">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>1024</width>
+               <height>180</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(0, 0, 0, 100);  </string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QPushButton" name="pushButton">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>10</y>
+                <width>160</width>
+                <height>160</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius: 80px;
+	background-color: rgba(0, 0, 0, 0);  </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="resgame_system.qrc">
+                <normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>320</width>
+                <height>320</height>
+               </size>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_Show_UserName">
+              <property name="geometry">
+               <rect>
+                <x>193</x>
+                <y>59</y>
+                <width>581</width>
+                <height>71</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">	background-color: rgba(0, 0, 0, 0);  
+font: 40pt &quot;华光胖头鱼_CNKI&quot;;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QListWidget" name="listWidget">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>210</y>
+               <width>190</width>
+               <height>200</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(0, 0, 0, 100);  
+border: none</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_ShowApplication">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>310</y>
+               <width>151</width>
+               <height>23</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+             </property>
+             <property name="text">
+              <string>待处理申请</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_ShowAddFriend">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>270</y>
+               <width>151</width>
+               <height>23</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+             </property>
+             <property name="text">
+              <string>添加好友</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_ShowUserFriends">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>230</y>
+               <width>151</width>
+               <height>23</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+             </property>
+             <property name="text">
+              <string>我的好友</string>
+             </property>
+            </widget>
+            <widget class="QStackedWidget" name="stackedWidget_userFriendPage">
+             <property name="geometry">
+              <rect>
+               <x>200</x>
+               <y>210</y>
+               <width>800</width>
+               <height>420</height>
+              </rect>
+             </property>
+             <widget class="QWidget" name="page_userfriend">
+              <widget class="QScrollArea" name="scrollArea_3">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>800</width>
+                 <height>420</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border:none
+</string>
+               </property>
+               <property name="widgetResizable">
+                <bool>false</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents_2">
                 <property name="geometry">
                  <rect>
-                  <x>470</x>
-                  <y>10</y>
-                  <width>160</width>
-                  <height>20</height>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>787</width>
+                  <height>1000</height>
                  </rect>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgba(255, 255, 255, 0.2);
-	border: none;</string>
-                </property>
-                <property name="placeholderText">
-                 <string>搜索</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="pushButton_SearchGame_2">
-                <property name="geometry">
-                 <rect>
-                  <x>590</x>
-                  <y>10</y>
-                  <width>40</width>
-                  <height>20</height>
-                 </rect>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255，0);
-border:none</string>
-                </property>
-                <property name="text">
-                 <string/>
                 </property>
                </widget>
               </widget>
              </widget>
+             <widget class="QWidget" name="page_addfriend">
+              <widget class="QFrame" name="frame_14">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>800</width>
+                 <height>420</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgba(0, 0, 0, 100);  </string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <widget class="QLineEdit" name="lineEdit_addSearchName">
+                <property name="geometry">
+                 <rect>
+                  <x>60</x>
+                  <y>20</y>
+                  <width>521</width>
+                  <height>40</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255,80);
+color: rgb(255, 255, 255);
+border: none</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="placeholderText">
+                 <string>在此输入好友昵称：</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="pushButton_search">
+                <property name="geometry">
+                 <rect>
+                  <x>600</x>
+                  <y>20</y>
+                  <width>100</width>
+                  <height>40</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+                </property>
+                <property name="text">
+                 <string>查找</string>
+                </property>
+               </widget>
+               <widget class="QFrame" name="frame_showSearchedPage">
+                <property name="geometry">
+                 <rect>
+                  <x>60</x>
+                  <y>90</y>
+                  <width>640</width>
+                  <height>300</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255,0.4);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+               </widget>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="page_application">
+              <widget class="QScrollArea" name="scrollArea_6">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>800</width>
+                 <height>420</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border:none
+</string>
+               </property>
+               <property name="widgetResizable">
+                <bool>false</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents_applicationUser">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>787</width>
+                  <height>1000</height>
+                 </rect>
+                </property>
+               </widget>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="page_2"/>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="page_FriendPage">
+           <widget class="QFrame" name="frame_7">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>1022</width>
+              <height>180</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(0, 0, 0, 100);  </string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QPushButton" name="pushButton_Friend">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>10</y>
+               <width>160</width>
+               <height>160</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border-radius: 80px;
+	background-color: rgba(0, 0, 0, 0);  </string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resgame_system.qrc">
+               <normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>320</width>
+               <height>320</height>
+              </size>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_Show_FriendName">
+             <property name="geometry">
+              <rect>
+               <x>193</x>
+               <y>59</y>
+               <width>581</width>
+               <height>71</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">	background-color: rgba(0, 0, 0, 0);  
+font: 40pt &quot;华光胖头鱼_CNKI&quot;;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="page_PersonalGameLibraryPage">
+           <widget class="QFrame" name="frame_11">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>1024</width>
+              <height>640</height>
+             </rect>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QFrame" name="frame_12">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>1022</width>
+               <height>180</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(0, 0, 0, 100);  </string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QPushButton" name="pushButton_4">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>10</y>
+                <width>160</width>
+                <height>160</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius: 80px;
+	background-color: rgba(0, 0, 0, 0);  </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="resgame_system.qrc">
+                <normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>320</width>
+                <height>320</height>
+               </size>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_Show_UserName_2">
+              <property name="geometry">
+               <rect>
+                <x>193</x>
+                <y>59</y>
+                <width>581</width>
+                <height>71</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">	background-color: rgba(0, 0, 0, 0);  
+font: 40pt &quot;华光胖头鱼_CNKI&quot;;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QFrame" name="Classify_Frame_2">
+             <property name="geometry">
+              <rect>
+               <x>111</x>
+               <y>190</y>
+               <width>800</width>
+               <height>40</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget {
+         background-color:rgb(64, 100, 167);  
+     }</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QLineEdit" name="Search_Bar">
+              <property name="geometry">
+               <rect>
+                <x>320</x>
+                <y>10</y>
+                <width>161</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(255, 255, 255, 0.2);
+	border: none;</string>
+              </property>
+              <property name="placeholderText">
+               <string>搜索已有的游戏名</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QFrame" name="frame_5">
+             <property name="geometry">
+              <rect>
+               <x>350</x>
+               <y>250</y>
+               <width>561</width>
+               <height>360</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(59, 59, 99);
+border: none;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QScrollArea" name="scrollArea_5">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>561</width>
+                <height>361</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="widgetResizable">
+               <bool>false</bool>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContents_GameLibrary">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>546</width>
+                 <height>1000</height>
+                </rect>
+               </property>
+              </widget>
+             </widget>
+            </widget>
+            <widget class="QFrame" name="frame_13">
+             <property name="geometry">
+              <rect>
+               <x>111</x>
+               <y>250</y>
+               <width>200</width>
+               <height>360</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget {
+         background-color:rgb(64, 100, 167);  
+     }</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QLabel" name="label_4">
+              <property name="geometry">
+               <rect>
+                <x>70</x>
+                <y>20</y>
+                <width>61</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 9pt &quot;华文琥珀&quot;;
+background-color: rgb(255, 255, 255，100);
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>按类型筛选</string>
+              </property>
+             </widget>
+             <widget class="QListWidget" name="listWidget_3">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>50</y>
+                <width>141</width>
+                <height>192</height>
+               </rect>
+              </property>
+              <item>
+               <property name="text">
+                <string>开放世界</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>MOBA</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>塔防</string>
+               </property>
+              </item>
+             </widget>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="page_PersonalShoppinCartPage">
+           <widget class="QFrame" name="frame_10">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>1021</width>
+              <height>641</height>
+             </rect>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QFrame" name="frame_20">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>1031</width>
+               <height>181</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(0, 0, 0, 100);  </string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QPushButton" name="pushButton_7">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>10</y>
+                <width>160</width>
+                <height>160</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius: 80px;
+	background-color: rgba(0, 0, 0, 0);  </string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="resgame_system.qrc">
+                <normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>320</width>
+                <height>320</height>
+               </size>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_Show_UserName_3">
+              <property name="geometry">
+               <rect>
+                <x>193</x>
+                <y>59</y>
+                <width>581</width>
+                <height>71</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">	background-color: rgba(0, 0, 0, 0);  
+font: 40pt &quot;华光胖头鱼_CNKI&quot;;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QLabel" name="label_6">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>200</y>
+               <width>331</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">font: 20pt &quot;华文琥珀&quot;;
+background-color: rgb(255, 255, 255，100);
+color: rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string>您的购物车</string>
+             </property>
+            </widget>
+            <widget class="QScrollArea" name="scrollArea_9">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>250</y>
+               <width>670</width>
+               <height>360</height>
+              </rect>
+             </property>
+             <property name="widgetResizable">
+              <bool>false</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents_Shoppingcart">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>655</width>
+                <height>1000</height>
+               </rect>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QFrame" name="Classify_Frame_4">
+             <property name="geometry">
+              <rect>
+               <x>750</x>
+               <y>250</y>
+               <width>241</width>
+               <height>180</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget {
+         background-color:rgb(64, 100, 167);  
+     }</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QLabel" name="label_7">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>20</y>
+                <width>101</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 15pt &quot;华文琥珀&quot;;
+background-color: rgb(255, 255, 255，100);
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>预计总额：</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_Pay">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>130</y>
+                <width>171</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+              </property>
+              <property name="text">
+               <string>支付</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_KeepShopping">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>90</y>
+                <width>171</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+              </property>
+              <property name="text">
+               <string>继续购物</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_showAllPrice">
+              <property name="geometry">
+               <rect>
+                <x>150</x>
+                <y>20</y>
+                <width>54</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="widget">
+           <widget class="QFrame" name="frame_9">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>1024</width>
+              <height>180</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(0, 0, 0, 100);  </string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QPushButton" name="pushButton_Friend_2">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>10</y>
+               <width>160</width>
+               <height>160</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border-radius: 80px;
+	background-color: rgba(0, 0, 0, 0);  </string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resgame_system.qrc">
+               <normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</normaloff>:/icon/u=157358869,2307745509&amp;fm=217&amp;app=126&amp;size=f242,150&amp;n=0&amp;f=PNG.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>320</width>
+               <height>320</height>
+              </size>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_Show_FriendName_2">
+             <property name="geometry">
+              <rect>
+               <x>193</x>
+               <y>59</y>
+               <width>581</width>
+               <height>71</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">	background-color: rgba(0, 0, 0, 0);  
+font: 40pt &quot;华光胖头鱼_CNKI&quot;;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QLabel" name="label_2">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>200</y>
+              <width>331</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 20pt &quot;华文琥珀&quot;;
+background-color: rgb(255, 255, 255，100);
+color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>您的购物车</string>
+            </property>
+           </widget>
+           <widget class="QScrollArea" name="scrollArea_4">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>250</y>
+              <width>600</width>
+              <height>361</height>
+             </rect>
+            </property>
+            <property name="widgetResizable">
+             <bool>false</bool>
+            </property>
+            <widget class="QWidget" name="scrollAreaWidgetContents_4">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>585</width>
+               <height>800</height>
+              </rect>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QFrame" name="Classify_Frame">
+            <property name="geometry">
+             <rect>
+              <x>700</x>
+              <y>250</y>
+              <width>311</width>
+              <height>181</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget {
+         background-color:rgb(64, 100, 167);  
+     }</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QLabel" name="label_3">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>10</y>
+               <width>101</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">font: 15pt &quot;华文琥珀&quot;;
+background-color: rgb(255, 255, 255，100);
+color: rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string>预计总额：</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>130</y>
+               <width>171</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+             </property>
+             <property name="text">
+              <string>支付</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_3">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>90</y>
+               <width>171</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+             </property>
+             <property name="text">
+              <string>继续购物</string>
+             </property>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="page_evaluateGame">
+           <widget class="QFrame" name="frame_15">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>1024</width>
+              <height>100</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(0, 0, 0, 100);  </string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QLabel" name="label_show_gameName">
+             <property name="geometry">
+              <rect>
+               <x>25</x>
+               <y>25</y>
+               <width>400</width>
+               <height>50</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(255, 255, 255,0);
+font: 30pt &quot;宋体&quot;;
+color: rgb(255, 255, 255);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
             </widget>
            </widget>
           </widget>
@@ -392,7 +1527,6 @@ border:none</string>
     </layout>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="resgame_system.qrc"/>

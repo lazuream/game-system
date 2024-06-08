@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1030</width>
+    <height>846</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(59, 59, 99);</string>
+  </property>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>-10</y>
+     <width>1031</width>
+     <height>871</height>
+    </rect>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1016</width>
+      <height>856</height>
+     </rect>
+    </property>
+    <widget class="QFrame" name="Home_Menu">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>-30</y>
+       <width>951</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(9, 56, 117);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listWidget">
+     <property name="geometry">
+      <rect>
+       <x>95</x>
+       <y>400</y>
+       <width>191</width>
+       <height>421</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0, 100);  </string>
+     </property>
+    </widget>
+    <widget class="QUndoView" name="undoView_2">
+     <property name="geometry">
+      <rect>
+       <x>-470</x>
+       <y>470</y>
+       <width>791</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget {
+         background-color: rgba(0, 0, 0, 100);  
+     }</string>
+     </property>
+    </widget>
+    <widget class="QUndoView" name="undoView">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>170</y>
+       <width>161</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 80px;</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>400</y>
+       <width>581</width>
+       <height>421</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget {
+         background-color: rgba(0, 0, 0, 100);  
+     }</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>330</y>
+       <width>311</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 20pt &quot;华文琥珀&quot;;
+background-color: rgb(255, 255, 255，100);
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>在此处管理厂商的操作</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>111</x>
+       <y>462</y>
+       <width>151</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+     </property>
+     <property name="text">
+      <string>厂商资料</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>111</x>
+       <y>582</y>
+       <width>151</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+     </property>
+     <property name="text">
+      <string>发售的游戏</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>111</x>
+       <y>642</y>
+       <width>151</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+     </property>
+     <property name="text">
+      <string>查询订单信息</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>111</x>
+       <y>522</y>
+       <width>151</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+     </property>
+     <property name="text">
+      <string>关注用户列表</string>
+     </property>
+    </widget>
+    <zorder>listWidget</zorder>
+    <zorder>pushButton</zorder>
+    <zorder>pushButton_3</zorder>
+    <zorder>pushButton_4</zorder>
+    <zorder>pushButton_2</zorder>
+    <zorder>undoView_2</zorder>
+    <zorder>Home_Menu</zorder>
+    <zorder>undoView</zorder>
+    <zorder>listWidget_2</zorder>
+    <zorder>label</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
