@@ -87,11 +87,6 @@ class Ui_ManufacturerWindow(object):
         self.lable_manufacturerGameSum.setStyleSheet("color: rgb(255, 255, 255);\n"
 "    font: 10pt \"华光胖头鱼_CNKI\";")
         self.lable_manufacturerGameSum.setObjectName("lable_manufacturerGameSum")
-        self.lable_UserSum = QtWidgets.QLabel(self.scrollArea_7)
-        self.lable_UserSum.setGeometry(QtCore.QRect(340, 430, 91, 16))
-        self.lable_UserSum.setStyleSheet("color: rgb(255, 255, 255);\n"
-"    font: 10pt \"华光胖头鱼_CNKI\";")
-        self.lable_UserSum.setObjectName("lable_UserSum")
         self.message1 = QtWidgets.QLabel(self.scrollArea_7)
         self.message1.setGeometry(QtCore.QRect(430, 310, 191, 16))
         self.message1.setStyleSheet("color: rgb(255, 255, 255);\n"
@@ -104,12 +99,6 @@ class Ui_ManufacturerWindow(object):
 "    font: 10pt \"华光胖头鱼_CNKI\";")
         self.message3.setText("")
         self.message3.setObjectName("message3")
-        self.message4 = QtWidgets.QLabel(self.scrollArea_7)
-        self.message4.setGeometry(QtCore.QRect(450, 430, 201, 16))
-        self.message4.setStyleSheet("color: rgb(255, 255, 255);\n"
-"    font: 10pt \"华光胖头鱼_CNKI\";")
-        self.message4.setText("")
-        self.message4.setObjectName("message4")
         self.scrollArea_6.setWidget(self.scrollArea_7)
         self.stackedWidget.addWidget(self.page_Mainwindow)
         self.page_releaseGame = QtWidgets.QWidget()
@@ -670,7 +659,7 @@ class Ui_ManufacturerWindow(object):
         ManufacturerWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(ManufacturerWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         self.success_error_Type.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(ManufacturerWindow)
 
@@ -681,7 +670,6 @@ class Ui_ManufacturerWindow(object):
         self.lable_Title.setText(_translate("ManufacturerWindow", "以下是您的厂商信息"))
         self.lable_manufacturerID.setText(_translate("ManufacturerWindow", "厂商ID"))
         self.lable_manufacturerGameSum.setText(_translate("ManufacturerWindow", "游戏总数"))
-        self.lable_UserSum.setText(_translate("ManufacturerWindow", "关注用户总数"))
         self.lineEdit_gameName.setPlaceholderText(_translate("ManufacturerWindow", "游戏名称："))
         self.lineEdit_gameType1.setPlaceholderText(_translate("ManufacturerWindow", "游戏类型3："))
         self.lineEdit_gamePrice.setPlaceholderText(_translate("ManufacturerWindow", "游戏售价："))

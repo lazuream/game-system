@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_testwindow(object):
     def setupUi(self, testwindow):
         testwindow.setObjectName("testwindow")
-        testwindow.resize(1024, 768)
+        testwindow.resize(1022, 768)
         self.centralwidget = QtWidgets.QWidget(testwindow)
         self.centralwidget.setObjectName("centralwidget")
         self.background = QtWidgets.QFrame(self.centralwidget)
@@ -573,6 +573,200 @@ class Ui_testwindow(object):
 "color: rgb(255, 255, 255);")
         self.label_show_gameName.setText("")
         self.label_show_gameName.setObjectName("label_show_gameName")
+        self.scrollArea_7 = QtWidgets.QScrollArea(self.page_evaluateGame)
+        self.scrollArea_7.setGeometry(QtCore.QRect(0, 100, 1022, 541))
+        self.scrollArea_7.setWidgetResizable(False)
+        self.scrollArea_7.setObjectName("scrollArea_7")
+        self.scrollAreaWidgetContents_5 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, -117, 1007, 10000))
+        self.scrollAreaWidgetContents_5.setObjectName("scrollAreaWidgetContents_5")
+        self.textEdit_gameIntroduction = QtWidgets.QTextEdit(self.scrollAreaWidgetContents_5)
+        self.textEdit_gameIntroduction.setGeometry(QtCore.QRect(53, 20, 900, 150))
+        self.textEdit_gameIntroduction.setStyleSheet("background-color: rgba(0, 0, 0, 100);  \n"
+"border: none\n"
+"     ")
+        self.textEdit_gameIntroduction.setObjectName("textEdit_gameIntroduction")
+        self.frame_16 = QtWidgets.QFrame(self.scrollAreaWidgetContents_5)
+        self.frame_16.setGeometry(QtCore.QRect(53, 190, 900, 350))
+        self.frame_16.setStyleSheet("QLineEdit{\n"
+"background-color: rgb(255, 255, 255,80);\n"
+"border: none\n"
+"}\n"
+"\n"
+"QTextEdit{\n"
+"background-color: rgb(255, 255, 255,80);\n"
+"border: none\n"
+"}")
+        self.frame_16.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_16.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_16.setObjectName("frame_16")
+        self.textEdit_evaluate = QtWidgets.QTextEdit(self.frame_16)
+        self.textEdit_evaluate.setGeometry(QtCore.QRect(70, 70, 760, 200))
+        self.textEdit_evaluate.setObjectName("textEdit_evaluate")
+        self.lineEdit_writeForWhichGame = QtWidgets.QLineEdit(self.frame_16)
+        self.lineEdit_writeForWhichGame.setGeometry(QtCore.QRect(70, 40, 760, 30))
+        self.lineEdit_writeForWhichGame.setText("")
+        self.lineEdit_writeForWhichGame.setReadOnly(True)
+        self.lineEdit_writeForWhichGame.setObjectName("lineEdit_writeForWhichGame")
+        self.pushButton_postSure = QtWidgets.QPushButton(self.frame_16)
+        self.pushButton_postSure.setGeometry(QtCore.QRect(660, 280, 171, 30))
+        self.pushButton_postSure.setStyleSheet("QPushButton {\n"
+"         background-color: rgb(92, 138, 0);\n"
+"    color: rgb(255, 255, 255);\n"
+"     }")
+        self.pushButton_postSure.setObjectName("pushButton_postSure")
+        self.pushButton_recommend = QtWidgets.QPushButton(self.frame_16)
+        self.pushButton_recommend.setGeometry(QtCore.QRect(160, 280, 31, 30))
+        self.pushButton_recommend.setStyleSheet("font: 9pt \"华光胖头鱼_CNKI\";\n"
+"color: rgb(255, 255, 255);")
+        self.pushButton_recommend.setObjectName("pushButton_recommend")
+        self.pushButton_disrecommend = QtWidgets.QPushButton(self.frame_16)
+        self.pushButton_disrecommend.setGeometry(QtCore.QRect(200, 280, 31, 30))
+        self.pushButton_disrecommend.setStyleSheet("font: 9pt \"华光胖头鱼_CNKI\";\n"
+"color: rgb(255, 255, 255);\n"
+"")
+        self.pushButton_disrecommend.setObjectName("pushButton_disrecommend")
+        self.lable_manufacturerID = QtWidgets.QLabel(self.frame_16)
+        self.lable_manufacturerID.setGeometry(QtCore.QRect(70, 280, 81, 30))
+        self.lable_manufacturerID.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 12pt \"华文仿宋\";\n"
+"")
+        self.lable_manufacturerID.setObjectName("lable_manufacturerID")
+        self.success_error_Type = QtWidgets.QStackedWidget(self.frame_16)
+        self.success_error_Type.setGeometry(QtCore.QRect(720, 310, 81, 30))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(self.success_error_Type.sizePolicy().hasHeightForWidth())
+        self.success_error_Type.setSizePolicy(sizePolicy)
+        self.success_error_Type.setStyleSheet("#successLogIn{\n"
+"}\n"
+"#successRegister{\n"
+"}\n"
+"#sizeWrong{\n"
+"    color: rgb(190, 0, 0);\n"
+"}\n"
+"#userNameWrong{\n"
+"    color: rgb(190, 0, 0);\n"
+"}\n"
+"#passwordWrong{\n"
+"    color: rgb(190, 0, 0);\n"
+"}\n"
+"#logInWrong{\n"
+"    color: rgb(190, 0, 0);\n"
+"}")
+        self.success_error_Type.setObjectName("success_error_Type")
+        self.emptyPage = QtWidgets.QWidget()
+        self.emptyPage.setObjectName("emptyPage")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.emptyPage)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.success_error_Type.addWidget(self.emptyPage)
+        self.page_success = QtWidgets.QWidget()
+        self.page_success.setObjectName("page_success")
+        self.successRelease = QtWidgets.QLabel(self.page_success)
+        self.successRelease.setGeometry(QtCore.QRect(0, 10, 54, 12))
+        self.successRelease.setStyleSheet("color: rgb(255, 255, 255);")
+        self.successRelease.setObjectName("successRelease")
+        self.success_error_Type.addWidget(self.page_success)
+        self.page_error1 = QtWidgets.QWidget()
+        self.page_error1.setObjectName("page_error1")
+        self.successRelease_2 = QtWidgets.QLabel(self.page_error1)
+        self.successRelease_2.setGeometry(QtCore.QRect(0, 10, 51, 16))
+        self.successRelease_2.setStyleSheet("color: rgb(190, 0, 0);")
+        self.successRelease_2.setObjectName("successRelease_2")
+        self.success_error_Type.addWidget(self.page_error1)
+        self.page_error2 = QtWidgets.QWidget()
+        self.page_error2.setObjectName("page_error2")
+        self.successRelease_3 = QtWidgets.QLabel(self.page_error2)
+        self.successRelease_3.setGeometry(QtCore.QRect(0, 10, 61, 16))
+        self.successRelease_3.setStyleSheet("color: rgb(190, 0, 0);")
+        self.successRelease_3.setObjectName("successRelease_3")
+        self.success_error_Type.addWidget(self.page_error2)
+        self.page1 = QtWidgets.QWidget()
+        self.page1.setObjectName("page1")
+        self.gridLayout = QtWidgets.QGridLayout(self.page1)
+        self.gridLayout.setObjectName("gridLayout")
+        self.successLogIn = QtWidgets.QLabel(self.page1)
+        self.successLogIn.setStyleSheet("#userNameWrong_1{\n"
+"    color: rgb(255, 0, 0);\n"
+"}")
+        self.successLogIn.setObjectName("successLogIn")
+        self.gridLayout.addWidget(self.successLogIn, 0, 0, 1, 1, QtCore.Qt.AlignHCenter)
+        self.success_error_Type.addWidget(self.page1)
+        self.page2 = QtWidgets.QWidget()
+        self.page2.setObjectName("page2")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.page2)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.successRegister = QtWidgets.QLabel(self.page2)
+        self.successRegister.setStyleSheet("#userNameWrong_1{\n"
+"    color: rgb(255, 0, 0);\n"
+"}")
+        self.successRegister.setObjectName("successRegister")
+        self.horizontalLayout_3.addWidget(self.successRegister, 0, QtCore.Qt.AlignHCenter)
+        self.success_error_Type.addWidget(self.page2)
+        self.page3 = QtWidgets.QWidget()
+        self.page3.setObjectName("page3")
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.page3)
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.logInWrong = QtWidgets.QLabel(self.page3)
+        self.logInWrong.setStyleSheet("#userNameWrong_1{\n"
+"    color: rgb(255, 0, 0);\n"
+"}")
+        self.logInWrong.setObjectName("logInWrong")
+        self.verticalLayout_7.addWidget(self.logInWrong, 0, QtCore.Qt.AlignHCenter)
+        self.success_error_Type.addWidget(self.page3)
+        self.page4 = QtWidgets.QWidget()
+        self.page4.setObjectName("page4")
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.page4)
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.sizeWrong = QtWidgets.QLabel(self.page4)
+        self.sizeWrong.setStyleSheet("#userNameWrong_1{\n"
+"    color: rgb(255, 0, 0);\n"
+"}")
+        self.sizeWrong.setObjectName("sizeWrong")
+        self.verticalLayout_9.addWidget(self.sizeWrong, 0, QtCore.Qt.AlignHCenter)
+        self.success_error_Type.addWidget(self.page4)
+        self.page5 = QtWidgets.QWidget()
+        self.page5.setObjectName("page5")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.page5)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.userNameWrong = QtWidgets.QLabel(self.page5)
+        self.userNameWrong.setStyleSheet("#userNameWrong_1{\n"
+"    color: rgb(255, 0, 0);\n"
+"}")
+        self.userNameWrong.setObjectName("userNameWrong")
+        self.verticalLayout_10.addWidget(self.userNameWrong, 0, QtCore.Qt.AlignHCenter)
+        self.success_error_Type.addWidget(self.page5)
+        self.page6 = QtWidgets.QWidget()
+        self.page6.setObjectName("page6")
+        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.page6)
+        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.passwordWrong = QtWidgets.QLabel(self.page6)
+        self.passwordWrong.setStyleSheet("#userNameWrong_1{\n"
+"    color: rgb(255, 0, 0);\n"
+"}")
+        self.passwordWrong.setObjectName("passwordWrong")
+        self.verticalLayout_11.addWidget(self.passwordWrong, 0, QtCore.Qt.AlignHCenter)
+        self.success_error_Type.addWidget(self.page6)
+        self.frame_17 = QtWidgets.QFrame(self.scrollAreaWidgetContents_5)
+        self.frame_17.setGeometry(QtCore.QRect(50, 660, 901, 81))
+        self.frame_17.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_17.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_17.setObjectName("frame_17")
+        self.lineEdit_writeForWhichGame_2 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_5)
+        self.lineEdit_writeForWhichGame_2.setGeometry(QtCore.QRect(53, 570, 900, 30))
+        self.lineEdit_writeForWhichGame_2.setStyleSheet("QLineEdit{\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 12pt \"华文仿宋\";\n"
+"background-color: rgb(255, 255, 255,80);\n"
+"border: none\n"
+"}\n"
+"color: rgb(255, 255, 255);\n"
+"font: 12pt \"华文仿宋\";\n"
+"")
+        self.lineEdit_writeForWhichGame_2.setReadOnly(True)
+        self.lineEdit_writeForWhichGame_2.setObjectName("lineEdit_writeForWhichGame_2")
+        self.scrollArea_7.setWidget(self.scrollAreaWidgetContents_5)
         self.stackedWidget_Window.addWidget(self.page_evaluateGame)
         self.horizontalLayout.addWidget(self.stackedWidget_Window)
         self.verticalLayout.addWidget(self.main)
@@ -591,6 +785,7 @@ class Ui_testwindow(object):
 
         self.retranslateUi(testwindow)
         self.stackedWidget_Window.setCurrentIndex(7)
+        self.success_error_Type.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(testwindow)
 
     def retranslateUi(self, testwindow):
@@ -625,4 +820,18 @@ class Ui_testwindow(object):
         self.label_3.setText(_translate("testwindow", "预计总额："))
         self.pushButton_2.setText(_translate("testwindow", "支付"))
         self.pushButton_3.setText(_translate("testwindow", "继续购物"))
+        self.pushButton_postSure.setText(_translate("testwindow", "确认发布"))
+        self.pushButton_recommend.setText(_translate("testwindow", "Y"))
+        self.pushButton_disrecommend.setText(_translate("testwindow", "N"))
+        self.lable_manufacturerID.setText(_translate("testwindow", "是否推荐："))
+        self.successRelease.setText(_translate("testwindow", "发布成功"))
+        self.successRelease_2.setText(_translate("testwindow", "出现错误"))
+        self.successRelease_3.setText(_translate("testwindow", "发布成功"))
+        self.successLogIn.setText(_translate("testwindow", " 登陆成功"))
+        self.successRegister.setText(_translate("testwindow", " 注册成功"))
+        self.logInWrong.setText(_translate("testwindow", "用户名或密码错误"))
+        self.sizeWrong.setText(_translate("testwindow", "用户名或密码长度不符合要求"))
+        self.userNameWrong.setText(_translate("testwindow", "该用户名已存在"))
+        self.passwordWrong.setText(_translate("testwindow", "两次输入密码不一致"))
+        self.lineEdit_writeForWhichGame_2.setText(_translate("testwindow", "其他用户对该游戏的评价："))
 import resgame_system_rc

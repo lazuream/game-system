@@ -7,8 +7,6 @@ from PyQt5.QtWidgets import QFrame, QApplication, QMainWindow, QDesktopWidget, Q
 import sys
 import pymysql
 import datetime
-import os
-import html
 
 USERID = None
 MANUFACTURERID = None
@@ -47,6 +45,7 @@ class LogInWindow(QtWidgets.QMainWindow):
         #用户注册按钮点击事件
         self.ui.pushButton_User_R_Sure.clicked.connect(self.register_user)
 
+    #切换用户/厂商登录
     def switch_page(self, pageid):
         global FLAG
         FLAG = (pageid + 1) % 2
@@ -133,6 +132,7 @@ class LogInWindow(QtWidgets.QMainWindow):
         else:
             self.ui.success_error_Type.setCurrentIndex(3)  # 账户名长度超过限制
 
+    #用户注册
     def register_user(self):
         self.ui.success_error_Type.setCurrentIndex(0)
 
@@ -173,6 +173,9 @@ class LogInWindow(QtWidgets.QMainWindow):
 
 
 class MainUserWindow(QtWidgets.QMainWindow):
+    #是否推荐
+    new_game_score = 1  # 1表示好评，0表示差评，默认好评
+    evaluation_frames = []  # 初始化评价帧列表
     def __init__(self):
         super().__init__()
         self.ui = Ui_testwindow()  # 注意这里是实例化对象
@@ -442,6 +445,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
     #         finally:
     #             db.close()
 
+    #添加游戏到购物车
     def add_game_to_shoppingcart(self, game_name, USERID):
         """
         尝试将指定游戏添加到用户的购物车中。
@@ -507,6 +511,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
         print(f"游戏'{game_name}'已成功添加至购物车2。")
         self.show()
 
+    #显示关键字查询的游戏结果界面
     def show_searchgame_page(self):
         self.ui.stackedWidget_Window.setCurrentIndex(1)
         # 连接数据库
@@ -543,6 +548,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
 
         self.show()
 
+    #将关键字查找结果添加到页面上
     def add_searched_page(self, x, y, name, introduction, cost):
         frame = QFrame(parent=self.ui.scrollAreaWidgetContents_3)  # 显式指定父对象为scroll
         frame.move(x, y)
@@ -663,6 +669,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
         frame.show()
         print(f"Game frame with name '{name}' added to layout.")
 
+    #显示个人好友界面
     def show_personal_friends_page(self):
         self.ui.stackedWidget_Window.setCurrentIndex(2)
         self.ui.stackedWidget_userFriendPage.setCurrentIndex(0)
@@ -712,6 +719,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
             print(f"用户{user_name[0]}暂时没有好友")
         self.ui.label_Show_UserName.setText(f"{user_name[0]}")
 
+    #添加好友链接块
     def add_user_friends(self, x, y, name):
         frame_Friend = QFrame(parent=self.ui.scrollAreaWidgetContents_2)
         frame_Friend.move(x, y)
@@ -737,11 +745,13 @@ class MainUserWindow(QtWidgets.QMainWindow):
 
         frame_Friend.show()
 
+    #显示好友主页
     def show_friend_page(self, friend_name):
         self.ui.stackedWidget_Window.setCurrentIndex(3)
 
         self.ui.label_Show_FriendName.setText(f"{friend_name}")
 
+    #添加好友的界面
     def show_addfriend_page(self):
         # 连接数据库对目标用户进行检查
         db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
@@ -771,6 +781,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
             # 用户不存在，给用户一个反馈
             print("提示, 找不到指定的目标用户。")
 
+    #显示查询到的好友信息到添加好友界面
     def add_searched_friend_page(self, x, y, friend_name):
         frame_Friend = QFrame(parent=self.ui.frame_showSearchedPage)
         frame_Friend.move(x, y)
@@ -797,6 +808,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
 
         frame_Friend.show()
 
+    #添加好友方法实现
     def add_user_friendrequest(self, new_friend_name):
         # 连接数据库
         db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
@@ -831,6 +843,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
         finally:
             db.close()
 
+    #显示其他用户对当前用户的好友申请
     def show_application_page(self):
         self.ui.stackedWidget_userFriendPage.setCurrentIndex(2)
         # 连接数据库
@@ -854,6 +867,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
             print(f"{user[0]}")
             self.add_application_user(x, y, user[0])
 
+    #添加好友请求信息到页面上
     def add_application_user(self, x, y, username):
         frame_applicationuser = QtWidgets.QFrame(self.ui.scrollAreaWidgetContents_applicationUser)
         frame_applicationuser.move(x, y)
@@ -896,6 +910,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
 
         frame_applicationuser.show()
 
+    #通过好友申请
     def agree_friend(self, friendname):
         # 连接数据库
         db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
@@ -915,6 +930,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
 
         self.reload_application()
 
+    #拒绝好友申请
     def disagree_friend(self, friendname):
         # 连接数据库
         db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
@@ -932,6 +948,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
 
         self.reload_application()
 
+    #重新加载页面
     def reload_application(self):
         # 获取scrollAreaWidgetContents_Shoppingcart中的所有子部件
         children_widgets = self.ui.scrollAreaWidgetContents_applicationUser.findChildren(QWidget)
@@ -967,6 +984,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
             print(f"{user[0]}")
             self.add_application_user(x, y, user[0])
 
+    #显示用户游戏库页面
     def show_personal_gamelibrary_page(self):
         self.ui.stackedWidget_Window.setCurrentIndex(4)
         # 连接数据库
@@ -1005,6 +1023,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
 
         self.show()
 
+    #添加用户游戏到页面上
     def add_gamelibrary_page(self, x, y, game_name):
         frame_gamelibrary = QtWidgets.QFrame(self.ui.scrollAreaWidgetContents_GameLibrary)
         frame_gamelibrary.move(x, y)
@@ -1032,7 +1051,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
                                                "    color: rgb(255, 255, 255);\n"
                                                "     }")
         pushButton_Evaluate.setObjectName("pushButton_Evaluate")
-        pushButton_Evaluate.clicked.connect(lambda :self.evaluate_game(game_name))
+        pushButton_Evaluate.clicked.connect(lambda :self.evaluate_game_page(game_name))
         pushButton_Evaluate.setText("评价")
 
         pushButton_StartGame = QtWidgets.QPushButton(frame_gamelibrary)
@@ -1055,12 +1074,205 @@ class MainUserWindow(QtWidgets.QMainWindow):
 
         frame_gamelibrary.show()
 
-    def evaluate_game(self, game_name):
+    #游戏评价
+    def evaluate_game_page(self, game_name):
+        #初始化页面
+        # 先清除之前展示的评价
+        for frame in self.evaluation_frames:
+            frame.deleteLater()  # 使用deleteLater()安全删除对象
+        self.evaluation_frames.clear()  # 清空列表
+        self.ui.scrollAreaWidgetContents_5.update()  # 更新界面
+        self.ui.stackedWidget_Window.setCurrentIndex(7)
+        self.ui.success_error_Type.setCurrentIndex(0)
+        self.ui.label_show_gameName.setText(f"{game_name}")
+        self.ui.lineEdit_writeForWhichGame.setText(f"为 {game_name} 写一篇评测")
+        self.ui.pushButton_postSure.clicked.connect(lambda: self.post_evaluate(game_name))
+        self.ui.pushButton_recommend.clicked.connect(lambda: self.clicked_recommend_button())
+        self.ui.pushButton_disrecommend.clicked.connect(lambda: self.clicked_disrecommend_button())
+
+        # 连接数据库
+        db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+        cursor = db.cursor()
+        #查询游戏id
+        cursor.execute(f"SELECT GAME_ID FROM game WHERE GAME_NAME = %s",(game_name,))
+        game_id = cursor.fetchone()
+
+        #查询游戏评价
+        cursor.execute(f"SELECT count(*) FROM  evaluatetable WHERE GAME_ID = %s",(game_id,))
+        evaluate_count= int(cursor.fetchone()[0])
+
+        if evaluate_count:
+            cursor.execute(f"SELECT e.EVALUATE, e.EVALUATE_DATE, e.SCORE, u.ACCOUNT_NUMBER FROM  evaluatetable e JOIN   user u ON e.USER_ID = u.USER_ID  WHERE   e.GAME_ID = %s",(game_id))
+            all_evaluates = cursor.fetchall()
+            for i in range(0, evaluate_count):
+                print(f"{all_evaluates[i][0]}, {all_evaluates[i][1]}, {all_evaluates[i][2]}, {all_evaluates[i][3]}")
+            self.show_game_evaluate(game_id)
+        else:
+            print("该游戏暂无评价")
+
+    def post_evaluate(self, game_name):
+        #获取新数据
+        new_game_evaluate = self.ui.textEdit_evaluate.toPlainText()
+
+        # 连接数据库
+        db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+        cursor = db.cursor()
+
+        #查询游戏id
+        cursor.execute(f"SELECT GAME_ID FROM game WHERE GAME_NAME = %s", (game_name,))
+        game_id_result = cursor.fetchone()
+
+        game_id = game_id_result[0]
+
+        try:
+            #开始事务处理
+            with db.cursor() as cursor:
+                #插入evaluatetable表
+                now_time = datetime.datetime.now()
+                cursor.execute(
+                    "INSERT INTO evaluatetable (USER_ID, GAME_ID, EVALUATE, EVALUATE_DATE, SCORE) VALUES (%s, %s, %s, %s, %s)",
+                    (USERID, game_id, new_game_evaluate, now_time, self.new_game_score))
+                print(f"游戏：{game_name}, 评测：{new_game_evaluate}, 是否推荐：{self.new_game_score}")
+                db.commit()
+                print("评测已发出")
+        except pymysql.MySQLError as e:
+            print(f"Database Error: {e}")
+            db.rollback()  # 出现错误时回滚事务
+            self.ui.success_error_Type.setCurrentIndex(2)  # 设置错误索引
+        finally:
+            db.close()
+            #设置成功状态
+            self.ui.success_error_Type.setCurrentIndex(1)
+
+    #推荐
+    def clicked_recommend_button(self):
+        self.new_game_score = 1;
+        print(f"推荐{self.new_game_score}")
+
+    #不推荐
+    def clicked_disrecommend_button(self):
+        self.new_game_score = 0;
+        print(f"不推荐{self.new_game_score}")
+
+    #显示游戏game的所有评价
+    def show_game_evaluate(self, game_id):
         self.ui.stackedWidget_Window.setCurrentIndex(7)
 
-        self.ui.label_show_gameName.setText(f"{game_name}")
+        #连接数据库
+        db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+        cursor = db.cursor()
+        #查询游戏评价数量
+        cursor.execute(f"SELECT COUNT(*) FROM evaluatetable WHERE GAME_ID = %s",(game_id,))
+        evaluate_count = int(cursor.fetchone()[0])
 
+        cursor.execute(f"SELECT e.EVALUATE, e.EVALUATE_DATE, e.SCORE, u.ACCOUNT_NUMBER\
+            FROM  evaluatetable e\
+            JOIN  user u ON e.USER_ID = u.USER_ID\
+            WHERE e.GAME_ID = %s", {game_id})
 
+        all_evaluate = cursor.fetchall()
+        for i in range(evaluate_count):
+            print(f"{all_evaluate[i][0]}, {all_evaluate[i][1]}, {all_evaluate[i][2]}, {all_evaluate[i][3]}")
+        db.close()
+
+        all_evaluate = list(all_evaluate)
+        x = 53
+        y = 630
+
+        for i in range(evaluate_count):
+            frame = self.add_game_evaluate(x, y, all_evaluate[i][3], all_evaluate[i][0],
+                                           all_evaluate[i][2])  # 捕获返回的frame
+            self.evaluation_frames.append(frame)  # 现在可以正确添加到列表中
+            y += 230
+            self.update()
+
+        self.show()
+
+    #添加游戏评价到页面
+    def add_game_evaluate(self, x, y, user_name, evaluate, score):
+        frame = QFrame(parent=self.ui.scrollAreaWidgetContents_5)  # 显式指定父对象为scroll
+        frame.move(x, y)
+        frame.setMinimumSize(900, 200)
+        frame.setMaximumSize(900, 200)
+        frame.setStyleSheet("background-color: rgb(59, 59, 89);")
+        frame.setObjectName("Frame")
+
+        layoutWidget = QtWidgets.QWidget(frame)
+        layoutWidget.setGeometry(QtCore.QRect(0, 0, 900, 200))
+        layoutWidget.setObjectName("layoutWidget")
+
+        frame_evaluate = QtWidgets.QVBoxLayout(layoutWidget)
+        frame_evaluate.setContentsMargins(3, 3, 3, 3)
+        frame_evaluate.setObjectName("Frame_Game")
+
+        # 用户名称
+        User_Name = QtWidgets.QPushButton(layoutWidget)
+        User_Name.setMouseTracking(True)
+        User_Name.setStyleSheet("QWidget {\n"
+                                "    background-color: rgb(255, 255, 255,20);\n"
+                                "    font: 15pt \"微软雅黑\";\n"
+                                "    color: rgb(255, 255, 255);\n"
+                                "     }\n"
+                                "")
+        User_Name.setText(f"{user_name}")
+        User_Name.setObjectName("User_Name")
+        User_Name.clicked.connect(lambda: self.show_user_page(user_name))
+        frame_evaluate.addWidget(User_Name)
+
+        # 评价栏
+        Game_Evaluate = QtWidgets.QPlainTextEdit(layoutWidget)
+        Game_Evaluate.setReadOnly(True)  # 设置为只读模式
+        Game_Evaluate.setMouseTracking(True)
+        Game_Evaluate.setStyleSheet("background-color: rgb(255, 255, 255,20);\n"
+                                        "font: 10pt \"微软雅黑\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "border:none;")
+        Game_Evaluate.setLineWidth(-1)
+        Game_Evaluate.setPlainText(f"{evaluate}")
+        Game_Evaluate.setObjectName("Game_evaluate")
+        frame_evaluate.addWidget(Game_Evaluate)
+
+        # 推荐栏
+        Game_Score = QtWidgets.QLabel(layoutWidget)
+        Game_Score.setStyleSheet("background-color: rgb(255, 255, 255,20);\n"
+                                 "font: 10pt \"微软雅黑\";\n"
+                                 "color: rgb(255, 255, 255);\n"
+                                 "border:none;")
+        if score == 1:
+            Game_Score.setText("推荐")
+        else:
+            Game_Score.setText("不推荐")
+        Game_Score.setObjectName("Game_Score")  # 注意修改了ObjectName以避免重复
+        frame_evaluate.addWidget(Game_Score)  # 应该添加Game_Score而非再次添加Game_Evaluate
+
+        frame.show()
+        return frame  # 确保返回frame对象
+
+    #刷新评价界面
+    # def reload_evaluate_page(self, game_id):
+    #     # 获取scrollAreaWidgetContents_Shoppingcart中的所有子部件
+    #     children_widgets = self.ui.scrollAreaWidgetContents_5.findChildren(QWidget)
+    #     # self.ui.emptyCartLable.setVisible(False)
+    #
+    #     # 遍历并删除所有子部件，但跳过名为'emptyCartLabel'的控件
+    #     for child in children_widgets:
+    #         if child.objectName() == "Frame":  # 假设emptyCartLabel有一个独特的objectName属性
+    #             child.deleteLater()
+    #
+    #     self.ui.label_showAllPrice.clear()
+    #
+    #     # 确保所有删除操作完成
+    #     QApplication.processEvents()
+    #
+    #     self.show_game_evaluate(game_id)
+
+    #显示用户主页
+    def show_user_page(self, user_name):
+        self.ui.stackedWidget_Window.setCurrentIndex(3)
+
+        self.ui.label_Show_FriendName.setText(f"{user_name}")
+
+    #将游戏从库中移除
     def remove_games_from_gamelirary(self, game_name):
         # 连接数据库
         db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
@@ -1113,6 +1325,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
             cursor.close()
             db.close()
 
+    #刷新游戏库界面
     def reload_gamelibrary(self):
         # 获取scrollAreaWidgetContents_Gamelibrary中的所有子部件
         children_widgets = self.ui.scrollAreaWidgetContents_GameLibrary.findChildren(QWidget)
@@ -1153,6 +1366,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
         QApplication.processEvents()
         self.show()
 
+    #显示购物车界面
     def show_personal_shoppingcart_page(self):
         self.ui.stackedWidget_Window.setCurrentIndex(5)
         # self.ui.emptyCartLable.setVisible(False)
@@ -1211,6 +1425,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
 
         self.show()
 
+    #添加购物车的游戏内容
     def add_shoppingcartgame_page(self, x, y, order_id, game_name, game_price):
         frame_shopingcartgame = QFrame(parent=self.ui.scrollAreaWidgetContents_Shoppingcart)
         frame_shopingcartgame.move(x, y)
@@ -1239,6 +1454,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
         pushButton_Remove.setText("移出购物车")
         frame_shopingcartgame.show()
 
+    #将游戏从购物车中移除
     def remove_games_from_shoppingcart(self, order_id, game_name):
         try:
             # 连接数据库
@@ -1277,6 +1493,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
 
         QTimer.singleShot(0, lambda: self.reload_shopping_cart(order_id))
 
+    #刷新购物车界面
     def reload_shopping_cart(self, order_id):
         # 获取scrollAreaWidgetContents_Shoppingcart中的所有子部件
         children_widgets = self.ui.scrollAreaWidgetContents_Shoppingcart.findChildren(QWidget)
@@ -1340,6 +1557,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
         QApplication.processEvents()
         self.show()
 
+    #购买游戏操作实现
     def pay_for_game(self, order_id):
         """
            处理用户支付操作，将当前用户的购物车中所有游戏状态更新为已购买，
@@ -1390,6 +1608,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
         #更新购物车界面
         QTimer.singleShot(0, lambda: self.reload_shopping_cart(order_id))
 
+    #测试接口函数
     def test(self, testname):
         print(f"{testname}")
 
@@ -1411,6 +1630,21 @@ class MainManufacturerWindow(QtWidgets.QMainWindow):
         #按钮绑定
         #跳转发布游戏界面按钮绑定
         self.ui.pushButton_releaseGame.clicked.connect(self.show_releasegame_page)
+        self.ui.pushButton_HomePage.clicked.connect(self.show_homepage)
+
+        #显示信息
+        #厂商名称
+        # 连接数据库
+        db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+        cursor = db.cursor()
+
+        cursor.execute("SELECT ACCOUNT_NUMBER FROM manufacturer WHERE MANUFACTURER_ID = %s",(MANUFACTURERID))
+        manufacturer_name = cursor.fetchone()[0]
+        self.ui.message1.setText(f"{manufacturer_name}")
+
+        cursor.execute("SELECT COUNT(*) FROM game WHERE MANUFACTURER_ID = %s",(MANUFACTURERID))
+        game_count = int(cursor.fetchone()[0])
+        self.ui.message3.setText(f"{game_count}")
 
     #居中显示
     def center(self):
@@ -1419,12 +1653,18 @@ class MainManufacturerWindow(QtWidgets.QMainWindow):
         qr.moveCenter(cp)
         self.move(qr.topLeft())
 
+    #显示厂商主页
+    def show_homepage(self):
+        self.ui.stackedWidget.setCurrentIndex(0)
+        self.show()
+
     #显示发布游戏界面
     def show_releasegame_page(self):
         self.ui.stackedWidget.setCurrentIndex(1)
         self.ui.pushButton_releaseSure.clicked.connect(self.release_game)
         self.show()
 
+    #f阿布游戏功能实现
     def release_game(self):
         new_gamename = self.ui.lineEdit_gameName.text()
         new_gameintroduction = self.ui.textEdit_gameIntroduction.toPlainText()

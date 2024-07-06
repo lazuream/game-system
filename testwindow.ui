@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
+    <width>1022</width>
     <height>768</height>
    </rect>
   </property>
@@ -1497,6 +1497,402 @@ color: rgb(255, 255, 255);</string>
              <property name="text">
               <string/>
              </property>
+            </widget>
+           </widget>
+           <widget class="QScrollArea" name="scrollArea_7">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>100</y>
+              <width>1022</width>
+              <height>541</height>
+             </rect>
+            </property>
+            <property name="widgetResizable">
+             <bool>false</bool>
+            </property>
+            <widget class="QWidget" name="scrollAreaWidgetContents_5">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>-117</y>
+               <width>1007</width>
+               <height>10000</height>
+              </rect>
+             </property>
+             <widget class="QTextEdit" name="textEdit_gameIntroduction">
+              <property name="geometry">
+               <rect>
+                <x>53</x>
+                <y>20</y>
+                <width>900</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(0, 0, 0, 100);  
+border: none
+     </string>
+              </property>
+             </widget>
+             <widget class="QFrame" name="frame_16">
+              <property name="geometry">
+               <rect>
+                <x>53</x>
+                <y>190</y>
+                <width>900</width>
+                <height>350</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLineEdit{
+background-color: rgb(255, 255, 255,80);
+border: none
+}
+
+QTextEdit{
+background-color: rgb(255, 255, 255,80);
+border: none
+}</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QTextEdit" name="textEdit_evaluate">
+               <property name="geometry">
+                <rect>
+                 <x>70</x>
+                 <y>70</y>
+                 <width>760</width>
+                 <height>200</height>
+                </rect>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="lineEdit_writeForWhichGame">
+               <property name="geometry">
+                <rect>
+                 <x>70</x>
+                 <y>40</y>
+                 <width>760</width>
+                 <height>30</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_postSure">
+               <property name="geometry">
+                <rect>
+                 <x>660</x>
+                 <y>280</y>
+                 <width>171</width>
+                 <height>30</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+         background-color: rgb(92, 138, 0);
+	color: rgb(255, 255, 255);
+     }</string>
+               </property>
+               <property name="text">
+                <string>确认发布</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_recommend">
+               <property name="geometry">
+                <rect>
+                 <x>160</x>
+                 <y>280</y>
+                 <width>31</width>
+                 <height>30</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">font: 9pt &quot;华光胖头鱼_CNKI&quot;;
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>Y</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_disrecommend">
+               <property name="geometry">
+                <rect>
+                 <x>200</x>
+                 <y>280</y>
+                 <width>31</width>
+                 <height>30</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">font: 9pt &quot;华光胖头鱼_CNKI&quot;;
+color: rgb(255, 255, 255);
+</string>
+               </property>
+               <property name="text">
+                <string>N</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="lable_manufacturerID">
+               <property name="geometry">
+                <rect>
+                 <x>70</x>
+                 <y>280</y>
+                 <width>81</width>
+                 <height>30</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(255, 255, 255);
+font: 12pt &quot;华文仿宋&quot;;
+</string>
+               </property>
+               <property name="text">
+                <string>是否推荐：</string>
+               </property>
+              </widget>
+              <widget class="QStackedWidget" name="success_error_Type">
+               <property name="geometry">
+                <rect>
+                 <x>720</x>
+                 <y>310</y>
+                 <width>81</width>
+                 <height>30</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>1</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#successLogIn{
+}
+#successRegister{
+}
+#sizeWrong{
+	color: rgb(190, 0, 0);
+}
+#userNameWrong{
+	color: rgb(190, 0, 0);
+}
+#passwordWrong{
+	color: rgb(190, 0, 0);
+}
+#logInWrong{
+	color: rgb(190, 0, 0);
+}</string>
+               </property>
+               <property name="currentIndex">
+                <number>0</number>
+               </property>
+               <widget class="QWidget" name="emptyPage">
+                <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+               </widget>
+               <widget class="QWidget" name="page_success">
+                <widget class="QLabel" name="successRelease">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>10</y>
+                   <width>54</width>
+                   <height>12</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string>发布成功</string>
+                 </property>
+                </widget>
+               </widget>
+               <widget class="QWidget" name="page_error1">
+                <widget class="QLabel" name="successRelease_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>10</y>
+                   <width>51</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(190, 0, 0);</string>
+                 </property>
+                 <property name="text">
+                  <string>出现错误</string>
+                 </property>
+                </widget>
+               </widget>
+               <widget class="QWidget" name="page_error2">
+                <widget class="QLabel" name="successRelease_3">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>10</y>
+                   <width>61</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(190, 0, 0);</string>
+                 </property>
+                 <property name="text">
+                  <string>发布成功</string>
+                 </property>
+                </widget>
+               </widget>
+               <widget class="QWidget" name="page1">
+                <layout class="QGridLayout" name="gridLayout">
+                 <item row="0" column="0" alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="successLogIn">
+                   <property name="styleSheet">
+                    <string notr="true">#userNameWrong_1{
+	color: rgb(255, 0, 0);
+}</string>
+                   </property>
+                   <property name="text">
+                    <string> 登陆成功</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page2">
+                <layout class="QHBoxLayout" name="horizontalLayout_3">
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="successRegister">
+                   <property name="styleSheet">
+                    <string notr="true">#userNameWrong_1{
+	color: rgb(255, 0, 0);
+}</string>
+                   </property>
+                   <property name="text">
+                    <string> 注册成功</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page3">
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="logInWrong">
+                   <property name="styleSheet">
+                    <string notr="true">#userNameWrong_1{
+	color: rgb(255, 0, 0);
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>用户名或密码错误</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page4">
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="sizeWrong">
+                   <property name="styleSheet">
+                    <string notr="true">#userNameWrong_1{
+	color: rgb(255, 0, 0);
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>用户名或密码长度不符合要求</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page5">
+                <layout class="QVBoxLayout" name="verticalLayout_10">
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="userNameWrong">
+                   <property name="styleSheet">
+                    <string notr="true">#userNameWrong_1{
+	color: rgb(255, 0, 0);
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>该用户名已存在</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page6">
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="passwordWrong">
+                   <property name="styleSheet">
+                    <string notr="true">#userNameWrong_1{
+	color: rgb(255, 0, 0);
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>两次输入密码不一致</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </widget>
+             <widget class="QFrame" name="frame_17">
+              <property name="geometry">
+               <rect>
+                <x>50</x>
+                <y>660</y>
+                <width>901</width>
+                <height>81</height>
+               </rect>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_writeForWhichGame_2">
+              <property name="geometry">
+               <rect>
+                <x>53</x>
+                <y>570</y>
+                <width>900</width>
+                <height>30</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	font: 12pt &quot;华文仿宋&quot;;
+background-color: rgb(255, 255, 255,80);
+border: none
+}
+color: rgb(255, 255, 255);
+font: 12pt &quot;华文仿宋&quot;;
+</string>
+              </property>
+              <property name="text">
+               <string>其他用户对该游戏的评价：</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
             </widget>
            </widget>
           </widget>
