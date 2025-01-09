@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_ManufacturerWindow(object):
     def setupUi(self, ManufacturerWindow):
         ManufacturerWindow.setObjectName("ManufacturerWindow")
-        ManufacturerWindow.resize(1024, 768)
+        ManufacturerWindow.resize(1024, 773)
         self.centralwidget = QtWidgets.QWidget(ManufacturerWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.background = QtWidgets.QFrame(self.centralwidget)
@@ -307,9 +307,9 @@ class Ui_ManufacturerWindow(object):
         self.verticalLayout_11.addWidget(self.passwordWrong, 0, QtCore.Qt.AlignHCenter)
         self.success_error_Type.addWidget(self.page6)
         self.stackedWidget.addWidget(self.page_releaseGame)
-        self.page_GameGarage = QtWidgets.QWidget()
-        self.page_GameGarage.setObjectName("page_GameGarage")
-        self.frame_14 = QtWidgets.QFrame(self.page_GameGarage)
+        self.page_manageGame = QtWidgets.QWidget()
+        self.page_manageGame.setObjectName("page_manageGame")
+        self.frame_14 = QtWidgets.QFrame(self.page_manageGame)
         self.frame_14.setGeometry(QtCore.QRect(0, 0, 1024, 180))
         self.frame_14.setStyleSheet("background-color: rgba(0, 0, 0, 100);  ")
         self.frame_14.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -338,40 +338,40 @@ class Ui_ManufacturerWindow(object):
 "color: rgb(255, 255, 255);\n"
 "    ")
         self.label.setObjectName("label")
-        self.scrollArea_8 = QtWidgets.QScrollArea(self.page_GameGarage)
-        self.scrollArea_8.setGeometry(QtCore.QRect(200, 210, 821, 431))
-        self.scrollArea_8.setWidgetResizable(False)
-        self.scrollArea_8.setObjectName("scrollArea_8")
-        self.scrollAreaWidgetContents_5 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 806, 800))
-        self.scrollAreaWidgetContents_5.setObjectName("scrollAreaWidgetContents_5")
-        self.scrollArea_8.setWidget(self.scrollAreaWidgetContents_5)
-        self.pushButton_UnsetGames = QtWidgets.QPushButton(self.page_GameGarage)
+        self.scrollArea_ManageGame = QtWidgets.QScrollArea(self.page_manageGame)
+        self.scrollArea_ManageGame.setGeometry(QtCore.QRect(200, 210, 821, 431))
+        self.scrollArea_ManageGame.setWidgetResizable(False)
+        self.scrollArea_ManageGame.setObjectName("scrollArea_ManageGame")
+        self.scrollAreaWidgetContents_manageGame = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_manageGame.setGeometry(QtCore.QRect(0, 0, 806, 800))
+        self.scrollAreaWidgetContents_manageGame.setObjectName("scrollAreaWidgetContents_manageGame")
+        self.scrollArea_ManageGame.setWidget(self.scrollAreaWidgetContents_manageGame)
+        self.pushButton_UnsetGames = QtWidgets.QPushButton(self.page_manageGame)
         self.pushButton_UnsetGames.setGeometry(QtCore.QRect(30, 310, 151, 23))
         self.pushButton_UnsetGames.setStyleSheet("QPushButton {\n"
 "         background-color: rgb(92, 138, 0);\n"
 "    color: rgb(255, 255, 255);\n"
 "     }")
         self.pushButton_UnsetGames.setObjectName("pushButton_UnsetGames")
-        self.pushButton_SettedGames = QtWidgets.QPushButton(self.page_GameGarage)
+        self.pushButton_SettedGames = QtWidgets.QPushButton(self.page_manageGame)
         self.pushButton_SettedGames.setGeometry(QtCore.QRect(30, 270, 151, 23))
         self.pushButton_SettedGames.setStyleSheet("QPushButton {\n"
 "         background-color: rgb(92, 138, 0);\n"
 "    color: rgb(255, 255, 255);\n"
 "     }")
         self.pushButton_SettedGames.setObjectName("pushButton_SettedGames")
-        self.pushButton_AllGames = QtWidgets.QPushButton(self.page_GameGarage)
+        self.pushButton_AllGames = QtWidgets.QPushButton(self.page_manageGame)
         self.pushButton_AllGames.setGeometry(QtCore.QRect(30, 230, 151, 23))
         self.pushButton_AllGames.setStyleSheet("QPushButton {\n"
 "         background-color: rgb(92, 138, 0);\n"
 "    color: rgb(255, 255, 255);\n"
 "     }")
         self.pushButton_AllGames.setObjectName("pushButton_AllGames")
-        self.listWidget_4 = QtWidgets.QListWidget(self.page_GameGarage)
+        self.listWidget_4 = QtWidgets.QListWidget(self.page_manageGame)
         self.listWidget_4.setGeometry(QtCore.QRect(0, 210, 200, 140))
         self.listWidget_4.setStyleSheet("background-color: rgba(0, 0, 0, 100);  ")
         self.listWidget_4.setObjectName("listWidget_4")
-        self.menu_4 = QtWidgets.QFrame(self.page_GameGarage)
+        self.menu_4 = QtWidgets.QFrame(self.page_manageGame)
         self.menu_4.setGeometry(QtCore.QRect(0, 705, 1024, 54))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -382,35 +382,14 @@ class Ui_ManufacturerWindow(object):
         self.menu_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.menu_4.setFrameShadow(QtWidgets.QFrame.Raised)
         self.menu_4.setObjectName("menu_4")
-        self.searchbar_2 = QtWidgets.QFrame(self.page_GameGarage)
-        self.searchbar_2.setGeometry(QtCore.QRect(280, 180, 661, 30))
-        self.searchbar_2.setStyleSheet("#frame{\n"
-"background-color: rgb(59, 59, 89,0.2);\n"
-"border-radius:15px;\n"
-"}")
-        self.searchbar_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.searchbar_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.searchbar_2.setObjectName("searchbar_2")
-        self.searchline_2 = QtWidgets.QLineEdit(self.searchbar_2)
-        self.searchline_2.setGeometry(QtCore.QRect(240, 0, 125, 30))
-        self.searchline_2.setStyleSheet("background-color: rgba(255, 255, 255, 0.2);\n"
-"    border: none;")
-        self.searchline_2.setObjectName("searchline_2")
-        self.searchButton_3 = QtWidgets.QPushButton(self.searchbar_2)
-        self.searchButton_3.setGeometry(QtCore.QRect(365, 0, 40, 30))
-        self.searchButton_3.setStyleSheet("background-color: rgb(255, 255, 255，0);\n"
-"border:none")
-        self.searchButton_3.setText("")
-        self.searchButton_3.setObjectName("searchButton_3")
         self.listWidget_4.raise_()
         self.frame_14.raise_()
-        self.scrollArea_8.raise_()
+        self.scrollArea_ManageGame.raise_()
         self.pushButton_UnsetGames.raise_()
         self.pushButton_SettedGames.raise_()
         self.pushButton_AllGames.raise_()
         self.menu_4.raise_()
-        self.searchbar_2.raise_()
-        self.stackedWidget.addWidget(self.page_GameGarage)
+        self.stackedWidget.addWidget(self.page_manageGame)
         self.page_FollowUsers = QtWidgets.QWidget()
         self.page_FollowUsers.setObjectName("page_FollowUsers")
         self.frame_15 = QtWidgets.QFrame(self.page_FollowUsers)
@@ -656,10 +635,24 @@ class Ui_ManufacturerWindow(object):
 "    font: 14pt \"华光胖头鱼_CNKI\";\n"
 "}")
         self.pushButton_HomePage.setObjectName("pushButton_HomePage")
+        self.pushButton_manageGame = QtWidgets.QPushButton(self.menu_3)
+        self.pushButton_manageGame.setGeometry(QtCore.QRect(190, 0, 91, 23))
+        self.pushButton_manageGame.setStyleSheet("QPushButton{\n"
+"    background-color: rgba(0, 0, 0, 0);  \n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 14pt \"华光胖头鱼_CNKI\";\n"
+"}")
+        self.pushButton_manageGame.setObjectName("pushButton_manageGame")
+        self.textBrowser = QtWidgets.QTextBrowser(self.background)
+        self.textBrowser.setGeometry(QtCore.QRect(790, 720, 221, 41))
+        self.textBrowser.setStyleSheet("background-color: rgb(255, 255, 255,0);\n"
+"border:none;\n"
+"border-radius:10px;")
+        self.textBrowser.setObjectName("textBrowser")
         ManufacturerWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(ManufacturerWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
         self.success_error_Type.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(ManufacturerWindow)
 
@@ -691,7 +684,6 @@ class Ui_ManufacturerWindow(object):
         self.pushButton_UnsetGames.setText(_translate("ManufacturerWindow", "未发布的游戏"))
         self.pushButton_SettedGames.setText(_translate("ManufacturerWindow", "已发布的游戏"))
         self.pushButton_AllGames.setText(_translate("ManufacturerWindow", "所有游戏"))
-        self.searchline_2.setPlaceholderText(_translate("ManufacturerWindow", "搜索可发布的游戏"))
         self.label_5.setText(_translate("ManufacturerWindow", "在此页查询关注你的用户"))
         self.searchline_3.setPlaceholderText(_translate("ManufacturerWindow", "搜索用户的ID"))
         self.pushButton_FollowedUSR.setText(_translate("ManufacturerWindow", "被哪些用户关注"))
@@ -705,4 +697,11 @@ class Ui_ManufacturerWindow(object):
         self.searchline_Users.setPlaceholderText(_translate("ManufacturerWindow", "按用户名查询"))
         self.pushButton_releaseGame.setText(_translate("ManufacturerWindow", "游戏发布"))
         self.pushButton_HomePage.setText(_translate("ManufacturerWindow", "主页"))
+        self.pushButton_manageGame.setText(_translate("ManufacturerWindow", "游戏管理"))
+        self.textBrowser.setHtml(_translate("ManufacturerWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">开发者姓名：               胡植淮</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">   学号：            202200800014</span></p></body></html>"))
 import resgame_system_rc

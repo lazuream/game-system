@@ -470,6 +470,12 @@ class Ui_LRMainWindow(object):
         self.pushButton_switch.setIcon(icon1)
         self.pushButton_switch.setIconSize(QtCore.QSize(30, 330))
         self.pushButton_switch.setObjectName("pushButton_switch")
+        self.textBrowser = QtWidgets.QTextBrowser(self.frame)
+        self.textBrowser.setGeometry(QtCore.QRect(10, 300, 221, 41))
+        self.textBrowser.setStyleSheet("background-color: rgb(255, 255, 255,0.4);\n"
+"border:none;\n"
+"border-radius:10px;")
+        self.textBrowser.setObjectName("textBrowser")
         LRMainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(LRMainWindow)
@@ -504,4 +510,10 @@ class Ui_LRMainWindow(object):
         self.sizeWrong.setText(_translate("LRMainWindow", "用户名或密码长度不符合要求"))
         self.userNameWrong.setText(_translate("LRMainWindow", "该用户名已存在"))
         self.passwordWrong.setText(_translate("LRMainWindow", "两次输入密码不一致"))
+        self.textBrowser.setHtml(_translate("LRMainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">开发者姓名：               胡植淮</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">   学号：            202200800014</p></body></html>"))
 import resgame_system_rc

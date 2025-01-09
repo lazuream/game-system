@@ -42,8 +42,9 @@ class LogInWindow(QtWidgets.QMainWindow):
         self.ui.pushButton_L_Sure.clicked.connect(lambda :self.log_in(FLAG))
         self.ui.pushButton_L_Sure_manufacturer.clicked.connect(lambda :self.log_in(FLAG))
 
-        #用户注册按钮点击事件
-        self.ui.pushButton_User_R_Sure.clicked.connect(self.register_user)
+        #用户与厂商注册按钮点击事件
+        self.ui.pushButton_User_R_Sure.clicked.connect(lambda: self.register(FLAG))
+        self.ui.pushButton_Manufacturer_R_Sure.clicked.connect(lambda: self.register(FLAG))
 
     #切换用户/厂商登录
     def switch_page(self, pageid):
@@ -133,43 +134,84 @@ class LogInWindow(QtWidgets.QMainWindow):
             self.ui.success_error_Type.setCurrentIndex(3)  # 账户名长度超过限制
 
     #用户注册
-    def register_user(self):
-        self.ui.success_error_Type.setCurrentIndex(0)
+    def register(self, FLAG):
+        global USERID
+        global MANUFACTURERID
+        if FLAG == 0:
+            self.ui.success_error_Type.setCurrentIndex(0)
 
-        new_account_number = self.ui.lineEdit_User_R_AccountNumber.text()
-        new_password = self.ui.lineEdit_User_R_Password.text()
-        new_check_password = self.ui.lineEdit_User_R_CheckPassword.text()
+            new_account_number = self.ui.lineEdit_User_R_AccountNumber.text()
+            new_password = self.ui.lineEdit_User_R_Password.text()
+            new_check_password = self.ui.lineEdit_User_R_CheckPassword.text()
 
-        # 检查用户名和密码长度
-        if len(new_account_number) > 10 or len(new_password) > 20 or len(new_account_number) == 0 or len(
-                new_password) == 0:
-            self.ui.success_error_Type.setCurrentIndex(4)
-            return
-        elif new_password != new_check_password:
-            self.ui.success_error_Type.setCurrentIndex(6)
-            return
+            # 检查用户名和密码长度
+            if len(new_account_number) > 10 or len(new_password) > 20 or len(new_account_number) == 0 or len(
+                    new_password) == 0:
+                self.ui.success_error_Type.setCurrentIndex(4)
+                return
+            elif new_password != new_check_password:
+                self.ui.success_error_Type.setCurrentIndex(6)
+                return
 
-        try:
-            db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
-            cursor = db.cursor()
+            try:
+                db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+                cursor = db.cursor()
 
-            # 防止SQL注入，使用参数化查询
-            cursor.execute("SELECT * FROM user WHERE ACCOUNT_NUMBER = %s", (new_account_number,))
-            flag = cursor.fetchall()
+                # 防止SQL注入，使用参数化查询
+                cursor.execute("SELECT * FROM user WHERE ACCOUNT_NUMBER = %s", (new_account_number,))
+                flag = cursor.fetchall()
 
-            if not flag:
-                cursor.execute("SELECT COUNT(*) FROM user")
-                # 使用参数化查询插入数据
-                cursor.execute("INSERT INTO user (ACCOUNT_NUMBER, PASSWORD) VALUES (%s, %s)",
-                               (new_account_number, new_password))
-                db.commit()  # 提交事务，确保数据被保存
-            else:
-                self.ui.success_error_Type.setCurrentIndex(5)
-        except pymysql.MySQLError as e:
-            print(f"Database Error: {e}")
-            self.ui.success_error_Type.setCurrentIndex(3)  # 数据库错误或其他未知错误
-        finally:
-            db.close()
+                if not flag:
+                    cursor.execute("SELECT COUNT(*) FROM user")
+                    # 使用参数化查询插入数据
+                    cursor.execute("INSERT INTO user (ACCOUNT_NUMBER, PASSWORD) VALUES (%s, %s)",
+                                    (new_account_number, new_password))
+                    db.commit()  # 提交事务，确保数据被保存
+                else:
+                    self.ui.success_error_Type.setCurrentIndex(5)
+            except pymysql.MySQLError as e:
+                print(f"Database Error: {e}")
+                self.ui.success_error_Type.setCurrentIndex(3)  # 数据库错误或其他未知错误
+            finally:
+                db.close()
+
+        elif FLAG == 1:
+            self.ui.success_error_Type.setCurrentIndex(0)
+
+            new_account_number = self.ui.lineEdit_Manufacturer_R_AccountNumber.text()
+            new_password = self.ui.lineEdit_Manufacturer_R_Password.text()
+            new_check_password = self.ui.lineEdit_Manufacturer_R_CheckPassword.text()
+
+            # 检查用户名和密码长度
+            if len(new_account_number) > 18 or len(new_password) > 20 or len(new_account_number) == 0 or len(
+                    new_password) == 0:
+                self.ui.success_error_Type.setCurrentIndex(4)
+                return
+            elif new_password != new_check_password:
+                self.ui.success_error_Type.setCurrentIndex(6)
+                return
+
+            try:
+                db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+                cursor = db.cursor()
+
+                # 防止SQL注入，使用参数化查询
+                cursor.execute("SELECT * FROM manufacturer WHERE ACCOUNT_NUMBER = %s", (new_account_number,))
+                flag = cursor.fetchall()
+
+                if not flag:
+                    cursor.execute("SELECT COUNT(*) FROM manufacturer")
+                    # 使用参数化查询插入数据
+                    cursor.execute("INSERT INTO manufacturer (ACCOUNT_NUMBER, PASSWORD) VALUES (%s, %s)",
+                                   (new_account_number, new_password))
+                    db.commit()  # 提交事务，确保数据被保存
+                else:
+                    self.ui.success_error_Type.setCurrentIndex(5)
+            except pymysql.MySQLError as e:
+                print(f"Database Error: {e}")
+                self.ui.success_error_Type.setCurrentIndex(3)  # 数据库错误或其他未知错误
+            finally:
+                db.close()
 
 
 class MainUserWindow(QtWidgets.QMainWindow):
@@ -773,6 +815,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
                 x = 100
                 y = 50
                 self.add_searched_friend_page(x, y, new_searched_friendname)
+                y += 230
                 self.show()
             else:
                 # 已经是好友，给用户一个反馈
@@ -866,6 +909,8 @@ class MainUserWindow(QtWidgets.QMainWindow):
         for user in user_names:
             print(f"{user[0]}")
             self.add_application_user(x, y, user[0])
+            y += 80
+        self.show()
 
     #添加好友请求信息到页面上
     def add_application_user(self, x, y, username):
@@ -1110,6 +1155,7 @@ class MainUserWindow(QtWidgets.QMainWindow):
         else:
             print("该游戏暂无评价")
 
+    #发布评价
     def post_evaluate(self, game_name):
         #获取新数据
         new_game_evaluate = self.ui.textEdit_evaluate.toPlainText()
@@ -1630,7 +1676,10 @@ class MainManufacturerWindow(QtWidgets.QMainWindow):
         #按钮绑定
         #跳转发布游戏界面按钮绑定
         self.ui.pushButton_releaseGame.clicked.connect(self.show_releasegame_page)
+        #跳转主页界面按钮绑定
         self.ui.pushButton_HomePage.clicked.connect(self.show_homepage)
+        #跳转游戏管理界面按钮绑定
+        self.ui.pushButton_manageGame.clicked.connect(self.show_managegame_page)
 
         #显示信息
         #厂商名称
@@ -1664,7 +1713,30 @@ class MainManufacturerWindow(QtWidgets.QMainWindow):
         self.ui.pushButton_releaseSure.clicked.connect(self.release_game)
         self.show()
 
-    #f阿布游戏功能实现
+    #显示管理游戏界面
+    def show_managegame_page(self):
+        self.ui.stackedWidget.setCurrentIndex(2)
+        # 连接数据库
+        db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+        cursor = db.cursor()
+
+        # 查询当前厂商拥有的所有游戏
+        cursor.execute(f"SELECT GAME_NAME FROM game WHERE MANUFACTURER_ID = %s", (MANUFACTURERID))
+        all_gamename = cursor.fetchall()
+
+        cursor.close()
+        db.close()
+
+        x = 40
+        y = 20
+        for gamename in all_gamename:
+            print(f"{gamename}")
+            self.add_managegame_page(x, y, gamename)
+            y += 80
+
+        self.show()
+
+    #发布游戏功能实现
     def release_game(self):
         new_gamename = self.ui.lineEdit_gameName.text()
         new_gameintroduction = self.ui.textEdit_gameIntroduction.toPlainText()
@@ -1721,6 +1793,118 @@ class MainManufacturerWindow(QtWidgets.QMainWindow):
                     db.close()
                     # 设置成功状态
                     self.ui.success_error_Type.setCurrentIndex(1)
+
+    #添加厂商游戏到界面
+    def add_managegame_page(self, x, y, gamename):
+        frame_applicationuser = QtWidgets.QFrame(self.ui.scrollAreaWidgetContents_manageGame)
+        frame_applicationuser.move(x, y)
+        frame_applicationuser.setMinimumSize(700, 70)
+        frame_applicationuser.setMaximumSize(700, 70)
+        frame_applicationuser.setStyleSheet("background-color: rgb(59, 59, 89);  ")
+        frame_applicationuser.setObjectName("frame")
+
+        Game_Name = QtWidgets.QLabel(frame_applicationuser)
+        Game_Name.setGeometry(QtCore.QRect(3, 3, 700, 30))
+        Game_Name.setMouseTracking(True)
+        Game_Name.setStyleSheet("QWidget {\n"
+                                "    background-color: rgb(255, 255, 255,20);\n"
+                                "    font: 15pt \"微软雅黑\";\n"
+                                "    color: rgb(255, 255, 255);\n"
+                                "     }\n"
+                                "")
+        Game_Name.setText(f"{gamename}")
+        Game_Name.setObjectName("Game_Name")
+
+        pushButton_Introduction = QtWidgets.QPushButton(frame_applicationuser)
+        pushButton_Introduction.setGeometry(QtCore.QRect(530, 40, 75, 20))
+        pushButton_Introduction.setStyleSheet("QPushButton {\n"
+                                       "         background-color: rgb(92, 138, 0);\n"
+                                       "    color: rgb(255, 255, 255);\n"
+                                       "     }")
+        pushButton_Introduction.setObjectName("pushButton_Agree")
+        # pushButton_Introduction.clicked.connect(lambda: self.agree_friend(username)) //这个功能不想做了
+        pushButton_Introduction.setText("详情")
+
+        pushButton_Delete = QtWidgets.QPushButton(frame_applicationuser)
+        pushButton_Delete.setGeometry(QtCore.QRect(625, 40, 75, 20))
+        pushButton_Delete.setStyleSheet("QPushButton {\n"
+                                        "         background-color: rgb(154, 231, 231);\n"
+                                        "    color: rgb(255, 255, 255);\n"
+                                        "     }")
+        pushButton_Delete.setObjectName("pushButton_Reject")
+        pushButton_Delete.clicked.connect(lambda: self.delete_game(gamename))
+        pushButton_Delete.setText("下架")
+
+        frame_applicationuser.show()
+
+    def delete_game(self, game_name):
+        # 连接数据库
+        db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+        cursor = db.cursor()
+
+        try:
+            #查询游戏id
+            cursor.execute(f"SELECT GAME_ID FROM game WHERE GAME_NAME = %s", (game_name,))
+            game_id_result = cursor.fetchone()
+
+            if game_id_result is None:
+                print(f"游戏'{game_name}'未找到。")
+                return
+
+            game_id = game_id_result[0]
+
+            #删除所有用户对该游戏的评价
+            cursor.execute(f"DELETE FROM evaluatetable WHERE GAME_ID = %s", (game_id))
+            #删除游戏在订单上的信息
+            cursor.execute(f"DELETE FROM order_details WHERE GAME_ID = %s", (game_id))
+            # 删除所有用户对该游戏的拥有记录
+            cursor.execute(f"DELETE FROM having_games WHERE GAME_ID = %s", (game_id))
+            #删除游戏拥有的标签信息
+            cursor.execute(f"DELETE FROM game_to_type WHERE GAME_ID = %s", (game_id))
+            #删除厂商对游戏的拥有信息
+            cursor.execute(f"DELETE FROM game WHERE GAME_ID = %s", (game_id))
+            db.commit()
+        except pymysql.MySQLError as e:
+            print(f"Database Error: {e}")
+            db.rollback()
+        finally:
+            db.close()
+        # 更新界面
+        self.reload_managegame()
+
+        print(f"游戏'{game_name}'已从游戏库中删除。")
+
+    #刷新游戏管理界面
+    def reload_managegame(self):
+        # 获取scrollAreaWidgetContents_Gamelibrary中的所有子部件
+        children_widgets = self.ui.scrollAreaWidgetContents_manageGame.findChildren(QWidget)
+
+        # 遍历并删除所有子部件
+        for child in children_widgets:
+            child.deleteLater()
+
+        # 确保所有删除操作完成
+        QApplication.processEvents()
+
+        # 连接数据库
+        db = pymysql.connect(host="localhost", user="root", password='123456', port=3306, db='game_system')
+        cursor = db.cursor()
+
+        #查询当前厂商拥有的所有游戏
+        cursor.execute(f"SELECT GAME_NAME FROM game WHERE MANUFACTURER_ID = %s",(MANUFACTURERID))
+        all_gamename = cursor.fetchall()
+        all_gamename = list(all_gamename)
+        cursor.close()
+        db.close()
+
+        x = 40
+        y = 20
+        for gamename in all_gamename:
+            print(f"{gamename}")
+            self.add_managegame_page(x, y, gamename)
+            y += 80
+
+        self.show()
 
 
 if __name__ == '__main__':

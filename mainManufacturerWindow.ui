@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>768</height>
+    <height>773</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -63,7 +63,7 @@ background-color: rgb(38, 38, 38);
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page_Mainwindow">
        <widget class="QScrollArea" name="scrollArea_6">
@@ -685,7 +685,7 @@ color: rgb(255, 255, 255);</string>
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="page_GameGarage">
+      <widget class="QWidget" name="page_manageGame">
        <widget class="QFrame" name="frame_14">
         <property name="geometry">
          <rect>
@@ -768,7 +768,7 @@ color: rgb(255, 255, 255);
          </property>
         </widget>
        </widget>
-       <widget class="QScrollArea" name="scrollArea_8">
+       <widget class="QScrollArea" name="scrollArea_ManageGame">
         <property name="geometry">
          <rect>
           <x>200</x>
@@ -780,7 +780,7 @@ color: rgb(255, 255, 255);
         <property name="widgetResizable">
          <bool>false</bool>
         </property>
-        <widget class="QWidget" name="scrollAreaWidgetContents_5">
+        <widget class="QWidget" name="scrollAreaWidgetContents_manageGame">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -886,70 +886,13 @@ color: rgb(255, 255, 255);
          <enum>QFrame::Raised</enum>
         </property>
        </widget>
-       <widget class="QFrame" name="searchbar_2">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>180</y>
-          <width>661</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">#frame{
-background-color: rgb(59, 59, 89,0.2);
-border-radius:15px;
-}</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <widget class="QLineEdit" name="searchline_2">
-         <property name="geometry">
-          <rect>
-           <x>240</x>
-           <y>0</y>
-           <width>125</width>
-           <height>30</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgba(255, 255, 255, 0.2);
-	border: none;</string>
-         </property>
-         <property name="placeholderText">
-          <string>搜索可发布的游戏</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="searchButton_3">
-         <property name="geometry">
-          <rect>
-           <x>365</x>
-           <y>0</y>
-           <width>40</width>
-           <height>30</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255，0);
-border:none</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </widget>
        <zorder>listWidget_4</zorder>
        <zorder>frame_14</zorder>
-       <zorder>scrollArea_8</zorder>
+       <zorder>scrollArea_ManageGame</zorder>
        <zorder>pushButton_UnsetGames</zorder>
        <zorder>pushButton_SettedGames</zorder>
        <zorder>pushButton_AllGames</zorder>
        <zorder>menu_4</zorder>
-       <zorder>searchbar_2</zorder>
       </widget>
       <widget class="QWidget" name="page_FollowUsers">
        <widget class="QFrame" name="frame_15">
@@ -1632,6 +1575,49 @@ border:none</string>
        <string>主页</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButton_manageGame">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>0</y>
+        <width>91</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-color: rgba(0, 0, 0, 0);  
+	color: rgb(255, 255, 255);
+	font: 14pt &quot;华光胖头鱼_CNKI&quot;;
+}</string>
+      </property>
+      <property name="text">
+       <string>游戏管理</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="geometry">
+      <rect>
+       <x>790</x>
+       <y>720</y>
+       <width>221</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255,0);
+border:none;
+border-radius:10px;</string>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;开发者姓名：	           胡植淮&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;   学号：	        202200800014&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
     </widget>
    </widget>
   </widget>

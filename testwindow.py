@@ -578,7 +578,7 @@ class Ui_testwindow(object):
         self.scrollArea_7.setWidgetResizable(False)
         self.scrollArea_7.setObjectName("scrollArea_7")
         self.scrollAreaWidgetContents_5 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, -117, 1007, 10000))
+        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 1007, 10000))
         self.scrollAreaWidgetContents_5.setObjectName("scrollAreaWidgetContents_5")
         self.textEdit_gameIntroduction = QtWidgets.QTextEdit(self.scrollAreaWidgetContents_5)
         self.textEdit_gameIntroduction.setGeometry(QtCore.QRect(53, 20, 900, 150))
@@ -780,11 +780,17 @@ class Ui_testwindow(object):
         self.menu_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.menu_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.menu_2.setObjectName("menu_2")
+        self.textBrowser = QtWidgets.QTextBrowser(self.menu_2)
+        self.textBrowser.setGeometry(QtCore.QRect(770, 10, 221, 41))
+        self.textBrowser.setStyleSheet("background-color: rgb(255, 255, 255,0);\n"
+"border:none;\n"
+"border-radius:10px;")
+        self.textBrowser.setObjectName("textBrowser")
         self.verticalLayout.addWidget(self.menu_2)
         testwindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(testwindow)
-        self.stackedWidget_Window.setCurrentIndex(7)
+        self.stackedWidget_Window.setCurrentIndex(0)
         self.success_error_Type.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(testwindow)
 
@@ -834,4 +840,10 @@ class Ui_testwindow(object):
         self.userNameWrong.setText(_translate("testwindow", "该用户名已存在"))
         self.passwordWrong.setText(_translate("testwindow", "两次输入密码不一致"))
         self.lineEdit_writeForWhichGame_2.setText(_translate("testwindow", "其他用户对该游戏的评价："))
+        self.textBrowser.setHtml(_translate("testwindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">开发者姓名：               胡植淮</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">   学号：            202200800014</span></p></body></html>"))
 import resgame_system_rc
